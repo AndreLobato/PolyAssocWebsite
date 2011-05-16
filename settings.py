@@ -4,6 +4,8 @@ import os
 gettext = lambda s: s
 
 PROJECT_DIR = os.path.abspath(os.path.dirname(__file__))
+## BB NECESSARY
+PROJECT_ROOT = PROJECT_DIR
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -20,7 +22,8 @@ DEFAULT_LANGUAGE = 0
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(PROJECT_DIR, 'polyassocdb.db'),
+        'NAME': os.path.join(PROJECT_DIR,'polyassocdb.db'),
+      
     }
 }
 
@@ -64,6 +67,20 @@ ADMIN_MEDIA_PREFIX = '/media/admin/'
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '0r6%7gip5tmez*vygfv+u14h@4lbt^8e2^26o#5_f_#b7%cm)u'
 
+
+ALLOWED_INCLUDE_ROOTS = (os.path.join(PROJECT_DIR,'templates/poly_assoc_website/'))
+
+
+AUTHENTICATION_BACKENDS = (
+    'userena.backends.UserenaAuthenticationBackend',
+    'guardian.backends.ObjectPermissionBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+AUTH_PROFILE_MODULE = 'poly_assoc_website.MemberProfile'
+
+ANONYMOUS_USER_ID = -1
+
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
@@ -86,18 +103,25 @@ MIDDLEWARE_CLASSES = (
     'cms.middleware.media.PlaceholderMediaMiddleware',
     'djangobb_forum.middleware.LastLoginMiddleware',
     'djangobb_forum.middleware.UsersOnline',
+   
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.auth',
+    'django.core.context_processors.debug',
     'django.core.context_processors.i18n',
-    'django.core.context_processors.request',
     'django.core.context_processors.media',
-    'cms.context_processors.media',
+    'django.core.context_processors.request',
+    'django_authopenid.context_processors.authopenid',
+    'djangobb_forum.context_processors.forum_settings',
+    'poly_assoc_website.context_processors.latest_links',
+    'poly_assoc_website.context_processors.latest_events',
 )
 
+
+
 CMS_TEMPLATES = (
-    ('example.html', 'Example Template'),
+    ('cms.html', 'Neutral Page'),
 )
 
 ROOT_URLCONF = 'urls'
@@ -109,30 +133,36 @@ TEMPLATE_DIRS = (
 DJANGOBB_SRC = os.path.join(PROJECT_DIR,'./djangobb/')
 
 LANGUAGES = (
-    ('ca', 'Catalan'),
-    ('cs', 'Czech'),
-    ('de', 'German'),
-    ('en', 'English'),
-    ('es', 'Spanish'),
-    ('fo', 'Faroese'),
-    ('fr', 'France'),
-    ('it', 'Italian'),
-    ('lt', 'Lithuanian'),
-    ('mn', 'Mongolian'),
-    ('pl', 'Polish'),
-    ('ru', 'Russian'),
-    ('uk_UA', 'Ukrainian'),
-    ('vi', 'Vietnamese'),
-    ('zh_CN', 'Chinese'),
+    ('en', gettext('English')),
+    ('pt-BR', gettext("Brazil")),
+    ('fr', gettext('French')),
+    ('sp', gettext('Spanish')),
+    ('de', gettext('German')),
+    
+    
 )
 
+CMS_SOFTROOT = os.path.join(PROJECT_DIR, '/cms/')
+CMS_MEDIA_ROOT = os.path.join(PROJECT_DIR, '/media/cms/')
+CMS_MEDIA_URL = '/media/cms/'
+#CMS_LANGUAGES = {1:['en','fr','de','pt-BR'],}
+
+CMS_MODERATOR = False
+CMS_PERMISSION = False
+CMS_SHOW_START_DATE = False
+CMS_SHOW_END_DATE = False
+CMS_SEO_FIELDS = False
+CMS_URL_OVERWRITE = False
+CMS_REDIRECTS = False
+CMS_APPHOOKS = ()
+CMS_MENU_TITLE_OVERWRITE = ''
 
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    'django.contrib.sites',
     'django.contrib.messages',
+    'django.contrib.sites',
     'django.contrib.admin',
     'cms',
     'menus',
@@ -150,6 +180,10 @@ INSTALLED_APPS = (
     'djangobb_forum',
     'haystack',
     'messages',
+    'userena',
+    'guardian',
+    'easy_thumbnails',
+    'poly_assoc_website',
 )
 
 try:
@@ -159,34 +193,26 @@ try:
 except ImportError:
     pass
 
-try:
-    import south
-    INSTALLED_APPS += ('south',)
-    SOUTH_TESTS_MIGRATE = False
-except ImportError:
-    pass
 
-FORCE_SCRIPT_NAME = ''
 
-TEMPLATE_CONTEXT_PROCESSORS = (
-    'django.core.context_processors.auth',
-    'django.core.context_processors.debug',
-    'django.core.context_processors.i18n',
-    'django.core.context_processors.media',
-    'django.core.context_processors.request',
-    'django_authopenid.context_processors.authopenid',
-    'djangobb_forum.context_processors.forum_settings',
-)
+
+
 
 # Haystack settings
 HAYSTACK_SITECONF = 'search_sites'
 HAYSTACK_SEARCH_ENGINE = 'whoosh'
-HAYSTACK_WHOOSH_PATH = os.path.join(PROJECT_ROOT, 'djangobb_index')
+HAYSTACK_WHOOSH_PATH = os.path.join(PROJECT_ROOT, 'search_index')
 
 # Account settings
 ACCOUNT_ACTIVATION_DAYS = 10
-LOGIN_REDIRECT_URL = '/forum/'
-LOGIN_URL = '/forum/account/signin/'
+LOGIN_REDIRECT_URL = '/accounts/%(username)s/'
+LOGIN_URL = '/accounts/signin/'
+LOGOUT_URL = '/accounts/signout/'
+
+# easy_thumbnails settings
+
+THUMBNAIL_MEDIA_ROOT = os.path.join(MEDIA_ROOT, 'thumbs')
+THUMBNAIL_MEDIA_URL = MEDIA_URL + '/thumbs/'
 
 #Cache settings
 CACHE_MIDDLEWARE_ANONYMOUS_ONLY = True

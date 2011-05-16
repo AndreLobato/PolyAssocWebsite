@@ -1,10 +1,8 @@
+{% extends "../templates/base.html" %}
 {% load forum_extras %}
 {% load i18n %}
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-	<title>{{ forum_settings.FORUM_BASE_TITLE }} {% block title %}{% endblock %}</title>
+{% block forum_head %}
+	<title>{% block title %}{{ forum_settings.FORUM_BASE_TITLE }} {% endblock %}</title>
 	<meta name="description" content="{{ forum_settings.FORUM_META_DESCRIPTION }} " />
 	<meta name="keywords" content="{{ forum_settings.FORUM_META_KEYWORDS }}" />
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -44,8 +42,9 @@
 		</script>
 	{% endif %}
 	{% block extra_meta %}{% endblock %}
-</head>
-<body>
+{% endblock forum_head %}
+
+{% block main %}
 	{% include 'forum/header.html' %}
 	{% block content %}{% endblock %}
 	<div id="brdfooter" class="block">
@@ -63,5 +62,4 @@
     </div>
 </div>
 </div>
-</body>
-</html>
+{% endblock main %}
