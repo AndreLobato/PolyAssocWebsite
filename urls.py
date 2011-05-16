@@ -56,7 +56,8 @@ urlpatterns = patterns('',
     #(r'^forum/', include('djangobb_forum.urls', namespace='djangobb')),
     
     # Userena 
-    url(r'^accounts(/?P<path>)', include('userena.urls')),
+    url(r'^accounts/', include('userena.urls')),
+    (r'^accounts/logout$', signout),
 
     # Polychaetologists Association Website
     (r'^useful-links/', useful_links),
@@ -66,6 +67,8 @@ urlpatterns = patterns('',
     (r'^event/add/complete/', direct_to_template, "poly_assoc_website/event_add_complete.html"),
     url(r'^event/', event_detail, name="event_detail"),
     (r'^events/', show_all_events),
+    
+
 )
 
 if settings.DEBUG:
