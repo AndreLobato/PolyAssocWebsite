@@ -93,7 +93,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django_authopenid.middleware.OpenIDMiddleware',
+    #'django_authopenid.middleware.OpenIDMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.cache.FetchFromCacheMiddleware',
     'django.middleware.transaction.TransactionMiddleware',
@@ -101,8 +101,8 @@ MIDDLEWARE_CLASSES = (
     'cms.middleware.user.CurrentUserMiddleware',
     'cms.middleware.toolbar.ToolbarMiddleware',
     'cms.middleware.media.PlaceholderMediaMiddleware',
-    'djangobb_forum.middleware.LastLoginMiddleware',
-    'djangobb_forum.middleware.UsersOnline',
+    #'djangobb_forum.middleware.LastLoginMiddleware',
+    #'djangobb_forum.middleware.UsersOnline',
    
 )
 
@@ -112,8 +112,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.i18n',
     'django.core.context_processors.media',
     'django.core.context_processors.request',
-    'django_authopenid.context_processors.authopenid',
-    'djangobb_forum.context_processors.forum_settings',
+    #'django_authopenid.context_processors.authopenid',
+    #'djangobb_forum.context_processors.forum_settings',
     'poly_assoc_website.context_processors.latest_links',
     'poly_assoc_website.context_processors.latest_events',
 )
@@ -130,7 +130,7 @@ TEMPLATE_DIRS = (
     os.path.join(PROJECT_DIR, 'templates'),
 )
 
-DJANGOBB_SRC = os.path.join(PROJECT_DIR,'./djangobb/')
+#DJANGOBB_SRC = os.path.join(PROJECT_DIR,'./djangobb/')
 
 LANGUAGES = (
     ('en', gettext('English')),
@@ -173,13 +173,13 @@ INSTALLED_APPS = (
     'cms.plugins.picture',
     'cms.plugins.link',
     'cms.plugins.file',
-    'cms.plugins.snippet',
+    #'cms.plugins.snippet',
     'cms.plugins.googlemap',
-    'registration',
-    'django_authopenid',
-    'djangobb_forum',
+    #'registration',
+    #'django_authopenid',
+    #'djangobb_forum',
     'haystack',
-    'messages',
+    #'messages',
     'userena',
     'guardian',
     'easy_thumbnails',

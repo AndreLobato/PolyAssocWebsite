@@ -1,6 +1,6 @@
 from django.contrib.sitemaps import Sitemap
-from djangobb_forum.models import Forum, Topic
-
+#from djangobb_forum.models import Forum, Topic
+'''
 
 class SitemapForum(Sitemap):
     priority = 0.5
@@ -13,4 +13,4 @@ class SitemapTopic(Sitemap):
     priority = 0.5
 
     def items(self):
-        return Topic.objects.all()
+        return Topic.objects.all()'''

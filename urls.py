@@ -5,9 +5,9 @@ from django.views.generic.simple import redirect_to
 from django.views.generic.list_detail import object_list
 from django.views.generic.simple import direct_to_template
 
-from sitemap import SitemapForum, SitemapTopic
+#from sitemap import SitemapForum, SitemapTopic
 from forms import RegistrationFormUtfUsername
-from djangobb_forum import settings as forum_settings
+#from djangobb_forum import settings as forum_settings
 
 from poly_assoc_website.views import *
 from poly_assoc_website.models import Event
@@ -25,11 +25,11 @@ for i, rurl in enumerate(authopenid_urlpatterns):
 
 admin.autodiscover()
 
-
+'''
 sitemaps = {
     'forum': SitemapForum,
     'topic': SitemapTopic,
-}
+}'''
 
 
 urlpatterns = patterns('',
@@ -48,15 +48,15 @@ urlpatterns = patterns('',
     (r'^search/', include('haystack.urls')),
 
     # Sitemap
-    (r'^sitemap.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps}),
+    #(r'^sitemap.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps}),
     
     # Apps
-    (r'^forum/account/', include(authopenid_urlpatterns)),
+    #(r'^forum/account/', include(authopenid_urlpatterns)),
 
-    (r'^forum/', include('djangobb_forum.urls', namespace='djangobb')),
+    #(r'^forum/', include('djangobb_forum.urls', namespace='djangobb')),
     
     # Userena 
-    (r'^accounts/', include('userena.urls')),
+    url(r'^accounts(/?P<path>)', include('userena.urls')),
 
     # Polychaetologists Association Website
     (r'^useful-links/', useful_links),
@@ -64,7 +64,7 @@ urlpatterns = patterns('',
     (r'^latest-links/', latest_links),
     (r'^event/add', add_event),
     (r'^event/add/complete/', direct_to_template, "poly_assoc_website/event_add_complete.html"),
-    (r'^event/?event_id=(\d+)$', event_detail),
+    url(r'^event/', event_detail, name="event_detail"),
     (r'^events/', show_all_events),
 )
 
@@ -74,9 +74,7 @@ if settings.DEBUG:
     ) + urlpatterns
 
 
-
-
-
+'''
 # PM Extension
 if (forum_settings.PM_SUPPORT):
     urlpatterns += patterns('',
@@ -87,4 +85,4 @@ if (settings.DEBUG):
     urlpatterns += patterns('',
         (r'^%s(?P<path>.*)$' % settings.MEDIA_URL.lstrip('/'),
             'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
-    )
+    )'''
