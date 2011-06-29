@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block latestlinks %}
+{% for link in latest %}
+<div id="lastlink">
+<p>{{ link.url }}</p>
+<p>Posted by {{ link.posted_by }} at {{ link.datetime|date:"c" }}
+<p>-------------------------------------------------------------</p>
+</div>
+{% endfor %}
+Showing 7 link from a total of <a href="{% url poly_assoc_website.views.useful_links %}">{{ total_links }} links</a>. 
+{% endblock latestlinks %}

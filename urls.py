@@ -12,6 +12,7 @@ from forms import RegistrationFormUtfUsername
 from poly_assoc_website.views import *
 from poly_assoc_website.models import Event
 
+'''
 # HACK for add default_params with RegistrationFormUtfUsername and backend to registration urlpattern
 # Must be changed after django-authopenid #50 (signup-page-does-not-work-whih-django-registration)
 # will be fixed
@@ -22,7 +23,7 @@ for i, rurl in enumerate(authopenid_urlpatterns):
 #                                                  'backend': 'registration.backends.default.DefaultBackend'})
 #    elif rurl.name == 'registration_activate':
 #                authopenid_urlpatterns[i].default_args = {'backend': 'registration.backends.default.DefaultBackend'}
-
+'''
 admin.autodiscover()
 
 '''
@@ -67,8 +68,14 @@ urlpatterns = patterns('',
     (r'^event/add/complete/', direct_to_template, "poly_assoc_website/event_add_complete.html"),
     url(r'^event/', event_detail, name="event_detail"),
     (r'^events/', show_all_events),
+    (r'^publications/', publications),
+    (r'^publications/%(username)s/', my_publications),
     
+    (r'^photos/', photo_gallery),
+    (r'^photos/(\w+)/', photo_detail),
 
+    (r'^members/$', members_list),
+    (r'^members/(\w+)/', member_profile),
 )
 
 if settings.DEBUG:
@@ -82,10 +89,10 @@ if settings.DEBUG:
 if (forum_settings.PM_SUPPORT):
     urlpatterns += patterns('',
         (r'^forum/pm/', include('messages.urls')),
-   )
+   )'''
 
 if (settings.DEBUG):
     urlpatterns += patterns('',
         (r'^%s(?P<path>.*)$' % settings.MEDIA_URL.lstrip('/'),
             'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
-    )'''
+    )

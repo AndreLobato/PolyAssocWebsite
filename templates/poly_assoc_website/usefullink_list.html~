@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% for object in object_list %}
+    <div id="link">
+    <p><a href="{{ object.url }}">{{ object.url }}</a></p>
+    <p>{{ object.description }}</p>
+    <p>Posted by {{ object.posted_by }} at {{ object.datetime }} </p>
+    <hr>
+    </div>
+{% endfor %}
+{% endblock content %}

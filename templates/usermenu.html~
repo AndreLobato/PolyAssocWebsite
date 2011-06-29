@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+
+
+{% block usermenu %}
+{% if user.is_authenticated %}                                     
+                    <ul>
+                        <li><a href="{% url userena_profile_detail user.username %}">{% trans "View profile" %} &raquo;</a></li>
+                        <li><a href="{% url userena_profile_edit user.username %}">{% trans "Edit details" %} &raquo;</a></li>
+                        <li><a href="{% url userena_password_change user.username %}">{% trans "Change password" %} &raquo;</a></li>
+                        <li><a href="{% url userena_email_change user.username %}">{% trans "Change email" %} &raquo;</a></li>
+                        <li>My Publications</li>
+                        <li>My News/Notes</li>
+                        <li>Annouce an event</li>
+                        <li>Send message to another member</li>                       
+                    </ul>                                             
+            {% else %}
+            {% block user_content %}            
+                <ul>
+                    <li><a href="{% url userena.views.signin %}">Sign In!</a> or</li>
+                    <li><a href="{% url userena.views.signup %}">Sign up a new account!</a></li>
+                </ul>
+            {% endblock user_content %}                         
+            {% endif %}
+{% endblock usermenu %}

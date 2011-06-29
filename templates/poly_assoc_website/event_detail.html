@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %} {{ event.title }} {% endblock title %}
+
+{% block content %}
+<h2>{{ event.title }}</h2>
+<p class='event_type' style="font-weight:bold;">{{ event.event_type }}</p>
+<p class='datetime'>When: {{ event.event_datetime }}.</p>
+<p class='location'>Where: {{event.location}}</p>
+<p class='url'>Event site: {{event.url}}</p>
+ <p class='details'>Details: {{event.details}}</p>
+<p>Published at {{ event.pub_datetime }} by {{ event.posted_by }}. </p>
+{% endblock content  %}

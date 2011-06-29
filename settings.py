@@ -81,6 +81,7 @@ AUTH_PROFILE_MODULE = 'poly_assoc_website.MemberProfile'
 
 ANONYMOUS_USER_ID = -1
 
+
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
@@ -116,6 +117,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     #'djangobb_forum.context_processors.forum_settings',
     'poly_assoc_website.context_processors.latest_links',
     'poly_assoc_website.context_processors.latest_events',
+    'poly_assoc_website.context_processors.latest_photos',
 )
 
 
@@ -212,7 +214,7 @@ LOGOUT_URL = '/accounts/signout/'
 # easy_thumbnails settings
 
 THUMBNAIL_MEDIA_ROOT = os.path.join(MEDIA_ROOT, 'thumbs')
-THUMBNAIL_MEDIA_URL = MEDIA_URL + '/thumbs/'
+THUMBNAIL_MEDIA_URL = MEDIA_URL + 'thumbs/'
 
 #Cache settings
 CACHE_MIDDLEWARE_ANONYMOUS_ONLY = True

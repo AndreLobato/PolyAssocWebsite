@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %} Events {% endblock title %}
+
+
+{% block content %}
+<h2> Events List </h2>
+{% for event in object_list %}
+    <div id="event">
+        <h3 class="eventTitle">{{ event.title }}</h3>
+        <p class="eventType">{{ event.type }}</p>
+        <p> When: {{ event.event_datetime }} </p>
+        <p> Location: {{ event.location }} </p>
+        <p>More info: {{ event.details }}</p>
+        <p>Event website: <a href="{{ event.url }}">{{ event.url }}</a></p>
+        <p>Posted by {{ event.posted_by }} at {{ event.pub_datetime }} </p>
+        <hr>
+    </div>
+{% endfor %}
+
+{% endblock content %}
+

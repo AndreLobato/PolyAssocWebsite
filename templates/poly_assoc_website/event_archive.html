@@ -1,0 +1,10 @@
+{% block event %}
+{% for event in latest_events %}
+<div id="lastlink">
+<p>{{ event.url }}</p>
+<p>Posted by {{ event.posted_by }} at {{ event.pub_datetime|date:"c" }}
+<p>-------------------------------------------------------------</p>
+</div>
+{% endfor %}
+Showing 7 events from a total of <a href="{% url poly_assoc_website.views.show_events %}">{{ total_links }} links</a>. 
+{% endblock latestlinks %}

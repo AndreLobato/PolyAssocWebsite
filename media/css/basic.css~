@@ -1,0 +1,78 @@
+HTML, BODY {
+    background: white; text-align: left;
+}
+
+div {
+    
+}
+
+.boxtitle {
+    
+}
+
+.errorlist {
+    color: red;
+}
+
+
+#topnav {
+    height: 30px;
+    
+}
+
+#middlehead {
+    border-bottom: 1px solid grey;
+   
+} 
+
+#middlenav {
+   width: 20%;
+   display: inline-block;
+}
+
+#topnav li {
+    display: inline;
+    float: right;
+    margin: 4px;
+}
+
+#main{
+    clear: both;
+}
+
+
+#leftcol {
+    width: 336px;
+    float: left;
+    border-right: 1px solid grey;
+    
+    
+}
+
+#rightcol {
+    width:336px;
+    float:right;
+    border-left: 1px solid grey;
+    
+}
+
+#content {
+        
+    margin: 0px 25%;
+    padding: 10px;
+    
+    
+
+}
+
+
+#footer {
+    text-align:center;
+    clear: both;
+    border-top: 1px solid grey;
+}
+
+
+#forumtopics {
+    float:right;        
+}

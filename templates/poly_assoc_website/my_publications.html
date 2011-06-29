@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}My Publications{% endblock title %}
+
+{% block content %}
+<div id="my_pub">
+    <h2>My Publications</h2>
+    <table>
+    <tr><td style="width:70%;">Title</td><td>Publish date</td><td>Publisher</td><td>URL</td></tr>
+    {% for pub in object_list %}
+    <tr><td style="width:70%;">{{ pub.title }}</td><td>{{ pub.publish_date }}</td><td>{{ pub.publisher }}</td><td>{{ pub.url }}</td></tr>
+    {% endfor %}
+    </table>
+
+</div>
+{% endblock content %}

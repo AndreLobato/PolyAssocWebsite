@@ -1,0 +1,5 @@
+{% extend "base.html" %}
+
+{% block latest_links %}
+
+{% endblock latest_links %}

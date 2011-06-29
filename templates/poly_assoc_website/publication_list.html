@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %} Members Association Publications{% endblock title %}}
+
+{% block content %}
+    <div id="publications">
+        <h2>Members Association Publications</h2>
+        {% if object_list %}
+        {% for pub in object_list %}
+        <div class="pub">
+            <h4> {{ pub.title }} </h4>
+            <p class="pub_info">Written by {{ pub.author }}, published at {{ pub.publish_date }} by {{ pub.publisher }}.</p>
+            <h5>Abstract</h5>
+            <p class="abstract"> {{ pub.abstract }}</p>
+            {% if pub.url %}<p class="url"><a href="{{ pub.url }}">Document URL: {{ pub.url }}</a></p>{% endif %}        
+        </div>
+        {% endfor %}{% endif %}
+    </div>
+{% endblock content %}
