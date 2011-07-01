@@ -1,13 +1,13 @@
 {% load i18n %}
 {% load thumbnail %}
 {% load cache menu_tags %}
-
 <!doctype html>
 <head>
   <title> {% block title %} Home {% endblock title %} - Polychaetologists Association</title>
   {% block cms_head %}{% endblock cms_head %}
   {% block forum_head %}{% endblock forum_head %}
   <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/basic.css"> 
+  <script src="{{ MEDIA_URL }}/js/galleria/galleria-1.2.4.min.js"></script>
   {% block extrastyle %}{% endblock extrastyle %}
 </head>
 

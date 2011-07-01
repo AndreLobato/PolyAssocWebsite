@@ -71,6 +71,13 @@ SECRET_KEY = '0r6%7gip5tmez*vygfv+u14h@4lbt^8e2^26o#5_f_#b7%cm)u'
 ALLOWED_INCLUDE_ROOTS = (os.path.join(PROJECT_DIR,'templates/poly_assoc_website/'))
 
 
+# Email Settings
+EMAIL_FILE_PATH = MEDIA_URL + 'emails/'
+EMAIL_SUBJECT_PREFIX = '[PolyAsoociationAdmin]'
+SERVER_EMAIL = 'no_reply@polyassoc.sci'
+SEND_BROKEN_LINK_EMAILS = True
+
+
 AUTHENTICATION_BACKENDS = (
     'userena.backends.UserenaAuthenticationBackend',
     'guardian.backends.ObjectPermissionBackend',
@@ -176,7 +183,7 @@ INSTALLED_APPS = (
     'cms.plugins.link',
     'cms.plugins.file',
     #'cms.plugins.snippet',
-    'cms.plugins.googlemap',
+    #'cms.plugins.googlemap',
     #'registration',
     #'django_authopenid',
     #'djangobb_forum',
@@ -207,7 +214,7 @@ HAYSTACK_WHOOSH_PATH = os.path.join(PROJECT_ROOT, 'search_index')
 
 # Account settings
 ACCOUNT_ACTIVATION_DAYS = 10
-LOGIN_REDIRECT_URL = '/accounts/%(username)s/'
+LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/accounts/signin/'
 LOGOUT_URL = '/accounts/signout/'
 
@@ -216,7 +223,7 @@ LOGOUT_URL = '/accounts/signout/'
 THUMBNAIL_MEDIA_ROOT = os.path.join(MEDIA_ROOT, 'thumbs')
 THUMBNAIL_MEDIA_URL = MEDIA_URL + 'thumbs/'
 
-#Cache settings
+#Cache settings1    
 CACHE_MIDDLEWARE_ANONYMOUS_ONLY = True
 
 try:

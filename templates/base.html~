@@ -1,7 +1,6 @@
 {% load i18n %}
 {% load thumbnail %}
 {% load cache menu_tags %}
-
 <!doctype html>
 <head>
   <title> {% block title %} Home {% endblock title %} - Polychaetologists Association</title>
@@ -31,7 +30,7 @@
             <li><a href="{% url poly_assoc_website.views.members_list %}">Members</a></li>     
             <li><a href="{% url poly_assoc_website.views.publications %}">Publications</a></li>
             <li><a href="{% url poly_assoc_website.views.show_all_events %}">Meetings</a></li>
-            <li><a href="{% url poly_assoc_website.views.photogallery %}">Photo gallery</a></li>
+            <li><a href="{% url poly_assoc_website.views.photo_gallery %}">Photo gallery</a></li>
             
         </ul> 
     </div>  
