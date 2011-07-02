@@ -10,3 +10,10 @@ class EventForm(ModelForm):
     required_css_class = 'required'
     class Meta:
         model = Event
+
+
+class PublicationForm(ModelForm):
+    error_css_class = 'error'
+    required_css_class = 'required'
+    class Meta:
+        model = Publication

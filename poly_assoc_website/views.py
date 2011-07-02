@@ -17,7 +17,7 @@ import datetime as dt
 
 
 from django.template import TemplateDoesNotExist
-from poly_assoc_website.forms import UsefulLinkForm, EventForm
+from poly_assoc_website.forms import UsefulLinkForm, EventForm, PublicationForm
 from poly_assoc_website.models import MemberProfile, Event, Publication, UsefulLink, Photo
 from poly_assoc_website.views import *
 
@@ -105,9 +105,29 @@ def publications(request):
 
 def my_publications(request, user):       
         my_publications = Publication.objects.filter(author=user)
-        return direct_to_template(request, "poly_assoc_website/my_publication_list.html", {'object_list' : my_publications } )
+        return direct_to_template(request, "poly_assoc_website/my_publication_list.html",
+                                  {'object_list' : my_publications } )
 
 
+@secure_required
+@permission_required_or_403('publication_add')
+def publication_add(request):
+    c = {}
+    c.update(csrf(request))
+    if request.method == 'POST':
+        publication = PublicationForm(request.method['POST'], auto_id=True)
+        if publication.is_valid():
+            publication.save()
+        else:
+            publication.error = "Publication did not validate."
+            return render_to_response('poly_assoc_website/publication_add.html', {'form' : publication }, RequestContext(request))
+    if request.method == 'GET':
+        publication = PublicationForm(auto_id=True)
+        try:
+            return render_to_response('poly_assoc_website/publication_add.html', {'form' : publication }, RequestContext(request))
+        except TemplateDoesNotExist:
+            raise Http404() 
+    
 
 
 

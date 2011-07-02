@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %} Members Association Publications{% endblock title %}
+{% block title %} Members Association Publications{% endblock title %}}
 
 {% block content %}
     <div id="publications">
