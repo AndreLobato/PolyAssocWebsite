@@ -1,5 +1,6 @@
 from poly_assoc_website.models import UsefulLink, Event, Photo
 import datetime
+
 def latest_links(request, queryset=UsefulLink.objects.all(), date_field='datetime', num_latest=15,
             extra_context=None, allow_future=False, 
             template_object_name='latest_links'):

@@ -74,7 +74,7 @@ urlpatterns = patterns('',
     (r'^publications/', publications),
     (r'^publications/%(username)s/', my_publications),
     
-    (r'^photos/', photo_gallery),
+    (r'^photos/$', photo_gallery),
     (r'^photos/(\w+)/', photo_detail),
 
     (r'^members/$', members_list),

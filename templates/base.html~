@@ -4,12 +4,13 @@
 <!doctype html>
 <head>
   <title> {% block title %} Home {% endblock title %} - Polychaetologists Association</title>
+  <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.min.js"></script>
+  <script type="text/javascript" src="{{ MEDIA_URL }}js/ui.core.js"></script> 
+  
   {% block cms_head %}{% endblock cms_head %}
   {% block forum_head %}{% endblock forum_head %}
   <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/basic.css"> 
   <script src="{{ MEDIA_URL }}js/galleria/galleria-1.2.4.min.js"></script>
-  <script src="{{ MEDIA_URL }}js/jquery-1.5.1.min.js"></script> 
-  <script src="{{ MEDIA_URL }}js/jquery-ui-1.8.14.custom.min.js"></script>  
   <script src="{{ MEDIA_URL }}js/common.js"></script>  
   {% block extrastyle %}{% endblock extrastyle %}
 </head>

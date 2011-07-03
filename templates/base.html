@@ -4,6 +4,9 @@
 <!doctype html>
 <head>
   <title> {% block title %} Home {% endblock title %} - Polychaetologists Association</title>
+  <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.min.js"></script>
+  <script type="text/javascript" src="{{ MEDIA_URL }}js/ui.core.js"></script> 
+  
   {% block cms_head %}{% endblock cms_head %}
   {% block forum_head %}{% endblock forum_head %}
   <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/basic.css"> 
@@ -100,7 +103,7 @@
                 <p>There is no event on the board. Please, <a href="{% url poly_assoc_website.views.add_event %}">anounce an event.</a></p>
             {% endif %}
         </div>
-        <div id="gallery">
+        <div id="thumb_gallery">
         <div class="boxtitle"><h2> Photo Gallery </h2></div>
             {% if latest_photos %}
                 {% for photo in latest_photos %}            
