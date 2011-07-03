@@ -4,10 +4,12 @@
 {% block title %}{% blocktrans with profile.user.username as username %}{{ username }}'s profile.{% endblocktrans %}{% endblock %}
 {% block content_title %}<h2>{{ profile.user.username }} {% if profile.user.get_full_name %}({{ profile.user.get_full_name }}){% endif %}</h2>{% endblock %}
 
-{% block content %}
-<div class="white-box">
 
-  {% comment %}Dirty hack. Will use django-guardian in the future.{% endcomment %}
+<div class="white-box">
+  
+  {% block content %}
+  {% comment %}
+  Dirty hack. Will use django-guardian in the future.
   {% if user.username == profile.user.username %}
   <ul id="box-nav">
     <li><a href="{% url userena_profile_detail user.username %}">{% trans "View profile" %} &raquo;</a></li>
@@ -16,23 +18,32 @@
     <li><a href="{% url userena_email_change user.username %}">{% trans "Change email" %} &raquo;</a></li>
   </ul>
   {% endif %}
-
+{% endcomment %}
   <div id="details">
     <img src="{{ profile.get_mugshot_url }}" alt="{% trans "Your mugshot" %}" />
     {% if profile.user.get_full_name %}
-    <p><strong>{% trans "Name" %}</strong><br /> {{ profile.user.get_full_name }}</p>
+    <h2>{{ profile.user.get_full_name }}</h2>
     {% endif %}
-    {% if profile.user.email %}
-    <p><strong>{% trans "Email" %}</strong><br />{{ profile.user.email }}</p>
+    {% if user.email %}
+    <p><strong>{% trans "Email" %}</strong><br />{{ user.email }}</p>
     {% endif %}
-    {% if profile.age %}
-    <p><strong>{% trans "Age" %}</strong><br /> {{ profile.age }}</p>
+
+    {% if profile.research_area %}
+    <p><strong>{% trans "Research area" %}</strong><br /> {{ profile.research_area }}</p>
     {% endif %}
-    {% if profile.website %}
-    <p><strong>{% trans "Website" %}</strong><br /> <a href="{{ profile.website }}">{{ profile.website }}</a></p>
+
+    {% if profile.institution %}
+    <p><strong>{% trans "Institution" %}</strong><br /> {{ profile.institution }}</p>
     {% endif %}
-    {% if profile.location %}
-    <p><strong>{% trans "Location" %}</strong><br />{{ profile.location }}</p>
+
+    {% if profile.work_location %}
+    <p><strong>{% trans "Work location" %}</strong><br /> {{ profile.work_location }}</p>
+    {% endif %}
+    {% if profile.homepage_url %}
+    <p><strong>{% trans "Website" %}</strong><br /> <a href="{{ profile.homepage_url }}">{{ profile.homepage_url }}</a></p>
+    {% endif %}
+    {% if profile.curriculum_url %}
+    <p><strong>{% trans "Location" %}</strong><br />{{ profile.curriculum_url }}</p>
     {% endif %}
     {% if profile.about_me %}
     <p><strong>{% trans "About me" %}</strong><br />{{ profile.about_me }}</p>

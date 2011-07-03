@@ -12,6 +12,7 @@ from forms import RegistrationFormUtfUsername
 from poly_assoc_website.views import *
 from poly_assoc_website.models import Event
 
+
 '''
 # HACK for add default_params with RegistrationFormUtfUsername and backend to registration urlpattern
 # Must be changed after django-authopenid #50 (signup-page-does-not-work-whih-django-registration)
@@ -38,11 +39,13 @@ urlpatterns = patterns('',
     # Site base
     url(r'^$', load_base_page),
     
+    # CMS
+    url(r'^cms/', include('cms.urls')),
+
     # Admin    
     url(r'^admin/', include(admin.site.urls)),
     
-    # CMS
-    url(r'^cms/', include('cms.urls')),
+    url(r'^news/', include('cmsplugin_advancednews.urls')),
 
     #Haystack
     
