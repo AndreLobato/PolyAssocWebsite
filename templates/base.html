@@ -12,11 +12,12 @@
   <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/basic.css"> 
   <script src="{{ MEDIA_URL }}js/galleria/galleria-1.2.4.min.js"></script>
   <script src="{{ MEDIA_URL }}js/common.js"></script>  
+  <script src="{{ MEDIA_URL }}js/galleria/themes/classic/galleria.classic.min.js"></script>
   {% block extrastyle %}{% endblock extrastyle %}
 </head>
 
 <body>
-
+{% block body %}
 <div id="tophead">
     <div id="searchbar">{% block search %}{% endblock search %}</div>
     <div id="sitelogo"><h1>Polycheatologists Association</h1></div>    
@@ -127,6 +128,6 @@
 
 
 
-
+{% endblock body %}
 </body>
 </html>

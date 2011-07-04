@@ -1,5 +1,10 @@
 from poly_assoc_website.models import UsefulLink, Event, Photo
+from settings import SITE_ROOT
+
 import datetime
+
+def site_root(request):
+    return { 'SITE_ROOT' : SITE_ROOT }
 
 def latest_links(request, queryset=UsefulLink.objects.all(), date_field='datetime', num_latest=15,
             extra_context=None, allow_future=False, 

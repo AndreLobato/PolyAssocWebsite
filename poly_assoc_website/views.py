@@ -145,6 +145,9 @@ def photo_detail(request, name_photo):
     photo = Photo.objects.get(name=name_photo)
     return list_detail.object_detail(request, queryset=Photo.objects.all(), object_id=photo.id ,template_object_name='photo')
 
+
+
+
 def members_list(request):
     return list_detail.object_list(request, queryset=MemberProfile.objects.all())
 
