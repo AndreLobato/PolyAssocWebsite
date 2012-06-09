@@ -1,0 +1,5 @@
+{{ object.url }}
+{{ object.description }}
+{{ object.user.get_full_name }}
+{{ object.body }}
+

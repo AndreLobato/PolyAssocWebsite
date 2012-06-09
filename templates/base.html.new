@@ -1,0 +1,167 @@
+{% load i18n thumbnail cache menu_tags cms_tags %}
+
+<!doctype html><head>
+<META NAME="DESCRIPTION" CONTENT="this is polychaete association website, here researchers can share informations and  experiences">
+<META NAME="ABSTRACT" CONTENT="polychaete association website">
+<META NAME="KEYWORDS" CONTENT="Polychaete Association, Polychaete, Benthic, Benthos, Benthology, Annelida, macrofauna, macrobenthic, macroinfauna, infauna, soft bottom, rocky shore, unconsolidated substrate, consolidated substrate,  epifauna,  bottom sediments, marine benthos">
+<META NAME="ROBOT" CONTENT="Index,Follow">
+<META NAME="RATING" CONTENT="general">
+<META NAME="DISTRIBUTION" CONTENT="global">
+
+  <title> {% block title %} Home {% endblock title %} - Polychaetologists Association</title>
+  <script src="../Scripts/swfobject_modified.js" type="text/javascript"></script>
+  {% comment %}<script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-1.6.2.min.js"></script>{% endcomment %}
+  
+  <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.js"></script>
+  <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-ui-1.8.16.custom.min.js"></script>
+  <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-ui-timepicker-addon.js"></script>  
+  {% plugins_media %}
+  {% block forum_head %}{% endblock forum_head %}
+  
+<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/basic.css"> 
+  <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/redmond/jquery-ui-1.8.14.custom.css">
+  <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/full_style.css">
+  <script src="{{ MEDIA_URL }}js/common.js"></script>
+ 
+  <script type="text/javascript">
+     document.write('<style>.noscript { display: none; }</style>');
+  </script>
+  {% block extrastyle %}{% endblock extrastyle %}
+  {% block extrahead %}{% endblock extrahead %}
+</head>
+    
+<body>
+<div id='wrapper'>
+<div id="tophead">
+    <div id="searchbar">{% block search %}{% endblock search %}</div>
+    <div id="sitelogo"><a href="/"><img src="{{ MEDIA_URL }}css/images/logo.jpg" alt="Polychaetologists Association"></a></div>    
+    <div id="topnav">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="{% url poly_assoc_website.views.useful_links %}">Useful Links</a></li>
+        </ul>    
+    </div>
+</div>    
+<div id="middlehead">
+    <div id="middlenav">
+        <ul>
+            {% show_menu 0 100 100 100 %}
+            <li><a href="{% url poly_assoc_website.views.members_list %}">Members</a></li>     
+            <li><a href="{% url poly_assoc_website.views.publications %}">Publications</a></li>
+            <li><a href="{% url poly_assoc_website.views.show_all_events %}">Meetings</a></li>
+            <li><a href="{% url poly_assoc_website.views.photo_gallery %}">Photo gallery</a></li>
+            
+        </ul> 
+    </div>  
+    <div id="flashimages">
+      <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,
+0,0,0" width="100%" height="100%">
+
+<param name="movie" id="movie" value="css/images/topo.swf">
+
+<embed id="movie" name="movie" src="http://www.polychaete-association.com/media/flash/topo.swf" pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash"
+ type="application/x-shockwave-flash" width="100%" height="100%"></embed> </object>
+  </div>
+    {% comment %}<div id="forumtopics"><h5>Active Forum Topics</h5></div>  {% endcomment %}  
+</div>
+       
+
+<div id="main">{% block main %}
+    <div id="leftcol">
+        <div id="usermenu">
+            <div class="boxtitle"><h3>User Menu</h3></div>            
+            {% if user.is_authenticated %}                                     
+                    <ul>
+                        <li><a href="{% url userena_profile_detail user.username %}">{% trans "View profile" %}</a></li>
+                        <li><a href="{% url userena_profile_edit user.username %}">{% trans "Edit profile details" %}</a></li>
+                        <li><a href="{% url poly_assoc_website.views.my_items user.pk %}">{% trans "My published items" %}</a></li>                                              
+                        <li><a href="{% url poly_assoc_website.views.add_event %}">{% trans "Annouce an event" %}</a></li>			                        <li><a href="{% url poly_assoc_website.views.add_publication %}">{% trans "Add Publication" %}</a></li>					
+                        <li><a href="{% url poly_assoc_website.views.new_useful_link %}">{% trans "Add New Useful Link" %}</a></li>
+                        <li><a onClick="window.open('/admin/cmsplugin_advancednews/news/add/?_popup=1','Add News/Note',  'width=800,height=800, scrollbars=yes');" href="javascript: void(0)">Publish News</a></li>                   
+                        <li><a href="{% url poly_assoc_website.views.signout %}"> Logout </a></li>                      
+                    </ul>                                             
+            {% else %}
+            {% block user_content %}            
+                <ul>
+                    <li><a href="{% url userena.views.signin %}">Sign In!</a> or</li>
+                    <li><a href="{% url userena.views.signup %}">Sign up a new account!</a></li>
+                  
+                </ul>
+            {% endblock user_content %}                         
+            {% endif %}
+                       
+        </div>
+        <div id="latestlinks"><div class="boxtitle"><h2>Useful Links</h2></div>       
+            {% for link in latest_links %}
+            <div id="lastlink">
+                <p class='link_title'>{{ link.description }}</p> 
+                <p class='link_url'><a href="{{ link.url }}" target="_blank">{{ link.url }}</a></p>
+                <p class='posted_by'>Posted by {{ link.posted_by }} at {{ link.datetime }}               
+            </div>
+                {% endfor %}
+            <p class="links_foot">Showing 7 links from a total of <a href="{% url poly_assoc_website.views.useful_links %}">{{ total_links }} links</a>. </p>
+       
+        </div>  
+    </div>
+    <div id ="rightcol">
+        <div id="events">
+            <div class="boxtitle"><h2> Upcoming Events </h2></div>
+            {% if latest_events %}
+                {% for event in latest_events %}
+                
+                <div id="event">
+                <p class='event_type'>{{ event.event_type }}
+                <p class='event_title'><a href="/event/?event_id={{event.id}}">{{ event.title }}</a></p>
+                <p class='event_info'> {{ event.event_datetime }}<br>
+                <p class="posted_by">Posted by: {{ event.posted_by }} at {{ event.pub_datetime }}</p>              
+                </div>
+            {% endfor %}
+            {% else %}
+                <p>There is no event on the board.{% if user.is_authenticated %} Please,    <a href="{% url poly_assoc_website.views.add_event %}">anounce an event.</a>{% endif %}</p>
+            {% endif %}
+        </div>
+        
+        <div id="thumbs_gallery">
+        <div class="boxtitle"><h2> Photo Gallery </h2></div>
+        {% if user.is_authenticated %}
+                <div class="upload_photo"><a href="{% url poly_assoc_website.views.add_photo %}">Upload a photo!</a></div>
+        {% endif %} 
+        <div id="thumbs_panel">       
+            {% if latest_photos %}
+                <ul>
+                {% for photo in latest_photos %}            
+                  <li style="opacity: 1;">  
+                    <a class="thumb_photo" name="{{ photo.slug_title }}" href="{% url poly_assoc_website.views.photo_gallery %}#{{photo.slug_title}}" title="{{ photo.title }}">
+                        <img src="{% thumbnail photo.image 78x78  %}" alt="{{ photo.title }}" />
+                  </a>
+                          
+                  </li> 
+                  {% endfor %}  
+                </ul>
+                
+            {% else %}
+                <p>No Photo was uploaded yet! </p>
+            {% endif %}
+        </div> 
+        
+       </div> 
+    
+    </div>
+    <div id="content">{% block content %}{% block cms_content %}
+
+    {% endblock cms_content %}{% endblock content %}
+    </div>
+    
+{% endblock main %}</div>
+<div id ="footer"></div>
+
+<script type="text/javascript">
+function dismissAddAnotherPopup(win) {
+    win.close();
+};
+swfobject.registerObject("FlashID");
+</script>
+
+</body>
+
+</html>

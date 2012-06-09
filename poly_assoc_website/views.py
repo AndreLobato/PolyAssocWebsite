@@ -159,6 +159,33 @@ def member_profile(request, username):
 
 
 
+<<<<<<< experiment
+=======
+@secure_required
+@permission_required_or_403('my_items')
+def my_items(request,user_pk):
+    c = {}
+    c.update(csrf(request))
+    user = MemberProfile.objects.get(user=user_pk)
+    if request.method == 'GET':
+        my_photos = Photo.objects.filter(posted_by=user.pk)
+        my_news = News.objects.filter(published_by=user.pk)
+        my_pubs = Publication.objects.filter(author=user.pk)
+        my_events = Event.objects.filter(posted_by=user.pk)
+        my_links = UsefulLink.objects.filter(posted_by=user.pk)
+        context = { 'my_photos' : my_photos,
+                    'my_news' : my_news,
+                    'my_publications' : my_pubs,
+                    'my_events' : my_events,
+                    'my_links' : my_links, }
+        try:
+            return render_to_response('poly_assoc_website/my_items.html', context, RequestContext(request))
+        except TemplateDoesNotExist:
+            raise Http404()
+ 
+@secure_required
+@permission_required_or_403('add_news')  
+>>>>>>> local
 
 
 

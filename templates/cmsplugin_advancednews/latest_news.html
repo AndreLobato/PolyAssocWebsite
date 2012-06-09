@@ -1,0 +1,19 @@
+{% load i18n %}
+
+
+<h2>{% trans "Association Latest News" %}</h2>
+
+
+<div id="latest_news">
+
+  {% for news in latest %}
+    <div class="news">
+    <h3>{{ news.title }}</h3>
+    <p class="published_by">Published by {{ news.published_by }} at {{ news.created }}</p> 
+    <p class="news_text">{{ news.content|safe|truncatewords:60 }}</p>
+    {% if news.content.count > 5 %}<p class="read_more"><a href="{{ news.get_absolute_url }}">Read More</a></p>{% endif %}
+  {% empty %}
+    <p class="empty_data">{% trans "No news yet" %}</p>
+  {% endfor %}
+  </div>
+</div>

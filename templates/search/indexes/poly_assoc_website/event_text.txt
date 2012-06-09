@@ -1,0 +1,6 @@
+{{ object.title }}
+{{ object.location }}
+{{ object.details }}
+{{ object.user.get_full_name }}
+{{ object.body }}
+

@@ -1,4 +1,5 @@
 from poly_assoc_website.models import UsefulLink, Event, Photo
+<<<<<<< experiment
 from settings import SITE_ROOT
 
 import datetime
@@ -7,6 +8,35 @@ def site_root(request):
     return { 'SITE_ROOT' : SITE_ROOT }
 
 def latest_links(request, queryset=UsefulLink.objects.all(), date_field='datetime', num_latest=15,
+=======
+import datetime
+from haystack.query import EmptySearchQuerySet
+from django.core.paginator import Paginator, InvalidPage
+from haystack.forms import ModelSearchForm, FacetedSearchForm
+
+def search_form(request, form_class=ModelSearchForm, load_all=True, searchqueryset=None):
+    query = ''
+    results = EmptySearchQuerySet()
+    
+    if request.GET.get('q'):
+        form = form_class(request.GET, searchqueryset=searchqueryset, load_all=load_all)
+        
+        if form.is_valid():
+            query = form.cleaned_data['q']
+            results = form.search()
+    else:
+        form = form_class(searchqueryset=searchqueryset, load_all=load_all)
+       
+    context = {
+        'search_form': form,
+        'search_query': query,
+        'search_suggestion': None,
+    }
+
+    return context
+
+def latest_links(request, queryset=UsefulLink.objects.all(), date_field='pub_datetime', num_latest=4,
+>>>>>>> local
             extra_context=None, allow_future=False, 
             template_object_name='latest_links'):
     

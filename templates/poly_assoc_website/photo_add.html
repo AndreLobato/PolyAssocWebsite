@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Add new photo{% endblock title %}
+
+
+{% block content %}
+<script src="{{ MEDIA_URL }}admin/js/urlify.js"></script>
+<div id="add_photo">
+<h2>Add new Photo</h2>
+{% if add %}
+<script type="text/javascript">
+//<![CDATA[	
+(function($) {
+	$(document).ready(function(){
+		$("#title").keyup(function() {
+	        var e = $("#slug_title")[0];
+	        if (!e._changed) {
+	            e.value = URLify(this.value, 64);
+	        }
+	    });
+	});
+})(jQuery);
+//]]>
+</script>
+{% endif %}
+<div id="photo_add" class="form">
+<form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
+   <p class="comment">Required fields are green! </p>
+   {% if form.error %}
+        <p>{{ form.error }}</p>
+    {% endif %}
+   
+    <p class="required">{{ form.title.label_tag }}: {{ form.title }} {{ form.title.error }}</p>
+    <p class="help_text">{{ form.title.help_text }}</p>
+    <p class="required">{{form.slug_title.label_tag}}: {{ form.slug_title }} {{ form.title.error }}</p>
+    <p class="help">{{ form.slug_title.help_text }}</p>
+    <p class="required">{{ form.image.label_tag }}: {{ form.image }} {{ form.image.error }}</p>
+    <p class="help_text">{{ form.image.help_text }}</p>
+    <p>{{ form.description.label_tag }}: {{ form.description }} {{ form.description.error }}</p>
+    <p class="help_text">{{ form.description.help_text }}</p>
+    <p class='posted_by'>{{ form.posted_by.label_tag }}: <input type="hidden" name="posted_by" value="{{ user.id }}">{{ user.username }}</p></div>
+    <input type="submit" value="Save Photo">
+</form>
+</div>
+
+{% endblock content %}

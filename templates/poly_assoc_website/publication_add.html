@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %} Add new Publication{% endblock title %}}
+
+{% block content %}
+<h2>Add new publication</h2>
+{% if form.error %}
+
+<p class='error'>Form did not validate. Check data format.</p>
+
+{% endif %}
+
+{% if form %}
+    {% comment %}{% if not profile.research_area or not profile.user.first_name or not profile.user.last_name or not profile.about_me %}
+    <p> It seems that you have not finished to edit your user profile.<br>
+    Please consider to "<a href="{% url userena_profile_edit user.username %}">{% trans "Edit your details" %} </a>."</p>
+    {% else %}{% endcomment %}
+    <div id="pub_add" class="form">
+    <p class="comment">Required fields are green! </p>
+    <form method="POST" action="">{% csrf_token %}
+        <p class="required">  {{form.author.label_tag}}: {{ form.author }} {{ form.author.error }}</p>
+        <p class="help_text">{{ form.author.help_text }}</p>
+        <p class="required">  {{form.others_authors.label_tag}}: {{ form.others_authors }} {{ form.others_authors.error }}</p>
+        <p class="help_text">{{ form.others_authors.help_text }}</p>
+        <p class="required">{{form.title.label_tag}}: {{ form.title }} {{ form.title.error }}</p>
+        <p class="help_text">{{ form.title.help_text }}</p>
+        <p class="required">{{form.abstract.label_tag}}: {{ form.abstract }} {{ form.abstract.error }}</p>
+        <p class="help_text">{{ form.abstract.help_text }}</p>
+        <p class="required">{{form.publisher.label_tag}}: {{ form.publisher }} {{ form.publisher.error }}</p>
+        <p class="help_text">{{ form.publisher.help_text }}</p>
+        <p class="required">{{form.publish_date.label_tag}}: {{ form.publish_date }} {{ form.publish_date.error }}</p>
+        <p class="help_text">{{ form.publish_date.help_text }}</p>
+        <p>{{form.url.label_tag}}: {{ form.url }} {{ form.url.error }}</p>
+        <p class="help_text">{{ form.url.help_text }}</p>
+        <p>{{ form.posted_by.label_tag }}: <input id="id_posted_by" type="hidden" name="posted_by" value="{{ user.id }}"> {{ user.username }} </p>
+    </div>
+
+    <input type="submit" value="Save Publication">
+    </form>
+    
+<script>
+$("#publish_date").datepicker();
+</script>
+    
+{% endif %}
+
+
+
+{% endblock content %}

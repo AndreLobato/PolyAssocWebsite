@@ -1,8 +1,7 @@
 from haystack.indexes import *
 from haystack import site
 from cms.models import Page, Title
-from integration.models import MemberProfile 
-
+from poly_assoc_website.models import MemberProfile, Publication, Event, UsefulLink, Photo
 
 
 class PageIndex(SearchIndex):
@@ -18,5 +17,15 @@ class TitleIndex(SearchIndex):
     meta_keywords = models.Charfield(model_attr='meta_keywords')
 
 
+class PublicationIndex(object):
+    title = models.CharField(document=True, use_template=True)
+    created_by = models.CharField(model_attr='author')
+    publication_date = models.DateTimeField(model_attr='publish_date')
+    
+
+
+
+
 site.register(Page, PageIndex)
 site.register(TitlePage, TitleIndex)
+site.register(Publication, PublicationIndex)

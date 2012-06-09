@@ -19,8 +19,16 @@
 <body>
 {% block body %}
 <div id="tophead">
+<<<<<<< experiment
     <div id="searchbar">{% block search %}{% endblock search %}</div>
     <div id="sitelogo"><h1>Polycheatologists Association</h1></div>    
+=======
+    <div id="searchbar"><form method="get" action="/search/">{% block search %}
+                        <input type="text" name='q' value={% if search_query %} {{ search_query }} {% else %} "" {% endif %} style="text-align:left;float:left;">         
+                        <input type="submit" value="Search">{% endblock search %}
+                        </form></div>
+    <div id="sitelogo"><a href="/"><img src="{{ MEDIA_URL }}css/images/logo.jpg" alt="Polychaetologists Association"></a></div>    
+>>>>>>> local
     <div id="topnav">
         <ul>
             <li><a href="/">Home</a></li>
@@ -77,8 +85,12 @@
             <div id="lastlink">
                 <p>{{ link.description }}</p> 
                 <p class='link_url'><a href="{{ link.url }}">{{ link.url }}</a></p>
+<<<<<<< experiment
                 <p class='posted_by'>Posted by {{ link.posted_by }} at {{ link.datetime }}               
                 <p>-------------------------------------------------------------</p>
+=======
+                <p class='posted_by'>Posted by {{ link.posted_by }} at {{ link.pub_datetime }}               
+>>>>>>> local
             </div>
                 {% endfor %}
             <p class="links_foot">Showing 7 links from a total of <a href="{% url poly_assoc_website.views.useful_links %}">{{ total_links }} links</a>. </p>
