@@ -11,6 +11,7 @@ class MemberProfile(UserenaLanguageBaseProfile):
     research_area = models.CharField(max_length=200)
     homepage_url =  models.URLField(blank=True,verify_exists=True)
     curriculum_url = models.URLField(blank=True,verify_exists=True)
+    pub_datetime = models.DateTimeField(auto_now_add=True)
     
     def __unicode__(self):
         return '%s' % self.user.username
@@ -21,18 +22,11 @@ class Publication(models.Model):
     author = models.CharField(max_length=128, help_text="Use scientific name. e.g. STUART, E.P.")
     others_authors = models.CharField(max_length=256,blank=True, help_text='Use scientific name separated by ";". e.g.: JAMES, A.L.; COLUMBUS, P.Z.')
     title = models.CharField(max_length=200)
-<<<<<<< experiment
-    abstract = models.TextField()
-    publisher = models.CharField(max_length=200)
-    publish_date = models.DateField("Date wich paper was published", blank=True)   
-    url = models.URLField("Link to publication online",blank=True,verify_exists=False)    
-=======
     abstract = models.TextField()    
     publisher = models.CharField(max_length=256, help_text="Name of article/thesis/dissertation publisher")
     publish_date = models.DateField(help_text="Date when the article/thesis/dissertation was published")   
     url = models.URLField(help_text="Link to publication online",blank=True,verify_exists=False)    
     posted_by = models.ForeignKey(MemberProfile)
->>>>>>> local
     pub_datetime = models.DateTimeField(auto_now_add=True)
 
     def get_absolute_url(self):
