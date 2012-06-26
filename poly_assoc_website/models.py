@@ -43,7 +43,7 @@ class Event(models.Model):
     event_date = models.DateField()
     event_time = models.TimeField()
     location = models.TextField()
-    url = models.URLField(blank=True,verify_exists=False)
+    url = models.URLField(verify_exists=True)
     details = models.TextField(blank=True)
     posted_by = models.ForeignKey(MemberProfile)
     pub_datetime = models.DateTimeField(auto_now_add=True)

@@ -29,10 +29,10 @@
 
 
         <div class='formrow'>
-            <p>{{ form.location.label_tag }} : {{ form.location }} {{ form.location.errors }}</p> 
+            <p class="required">{{ form.location.label_tag }} : {{ form.location }} {{ form.location.errors }}</p> 
             <p class='help_text'>{{ form.url.help_text }}</p></div>
         <div class='formrow'>
-            <p>{{ form.url.label_tag }} : {{ form.url }} {{ form.url.errors }} </p> 
+            <p class="required">{{ form.url.label_tag }} : {{ form.url }} {{ form.url.errors }} </p> 
             <p class='help_text'>{{ form.url.help_text }}</p></div>
         <div class='formrow'>
             <p>{{ form.details.label_tag }} : {{ form.details }} {{ form.details.errors }}</p> 
