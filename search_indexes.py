@@ -3,29 +3,51 @@ from haystack import site
 from cms.models import Page, Title
 from poly_assoc_website.models import MemberProfile, Publication, Event, UsefulLink, Photo
 
-
 class PageIndex(SearchIndex):
     text = CharField(document=True, use_template=True)
-    created_by = models.CharField(model_attr='user')
-    publication_date = models.DateTimeField(model_attr='publication_date')
+    created_by = CharField(model_attr='user')
+    publication_date = DateTimeField(model_attr='publication_date')
+   
+
+class PublicationIndex(SearchIndex):
+    text = CharField(document=True, use_template=True)
+    title = CharField(model_attr='title')
+    author = CharField(model_attr='author')
+    others_authors = CharField(model_attr='others_authors')
+    publisher = CharField(model_attr='publisher')
+    url = URLField(model_attr='url')
+    publication_date = DateTimeField(model_attr='publish_date')
+
+class MemberIndex(SearchIndex):
+    text = CharField(document=True, use_template=True)
+    about_me = Charfield(model_attr='about_me')
+    institution = CharField(model_attr='institution')
+    work_location = CharField(model_attr='work_location')
+    research_area = Charfield(model_attr='research_area')
+    homepage_url = URLield(model_attr='homepage_url')
+
+
+class UsefulLinkIndex(SearchIndex):
+    text = CharField(document=True, use_template=True)
+    url = URLField(model_attr='url')
+    description = CharField(model_attr='description')
+
     
+class EventIndex(SearchIndex):
+    text = CharField(document=True, use_template=True)
+    title = CharField(model_attr='title')
+    location = CharField(model_attr='location')
+    url = URLField(model_attr='url')
+    details = Charfield(model_attr='details')
 
-class TitleIndex(SearchIndex):
-    text = models.CharField(document=True, use_template=True)
-    title = models.Charfield(model_attr='title')
-    slug = models.Slugfield(model_attr='slug')
-    meta_keywords = models.Charfield(model_attr='meta_keywords')
-
-
-class PublicationIndex(object):
-    title = models.CharField(document=True, use_template=True)
-    created_by = models.CharField(model_attr='author')
-    publication_date = models.DateTimeField(model_attr='publish_date')
-    
-
-
-
+class PhotoIndex(SearchIndex):
+    text = CharField(document=True, use_template=True)
+    name = CharField(model_attr='name')
+    description = Charfield(model_attr='description'
 
 site.register(Page, PageIndex)
-site.register(TitlePage, TitleIndex)
 site.register(Publication, PublicationIndex)
+site.register(MemberProfile, MemberIndex)
+site.register(UsefulLink, UsefulLinkIndex)
+site.register(Event, EventIndex)
+site.register(Photo, PhotoIndex)
