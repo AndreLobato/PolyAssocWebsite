@@ -1,27 +1,29 @@
 /* Daia, colocar css aqui */
-HTML, BODY {text-align:left; margin-left:opx; margin-right:0px; margin-top:0px; margin-bottom:0px; background-color:#efeeee;}
-p {margin-top:10px;font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:12px; font-weight:normal; color:#666666; text-decoration:none;}
+HTML, BODY {text-align:left; margin-left:opx; margin-right:0px; 
+margin-top:0px; margin-bottom:0px; background-color:#efeeee;}
+p {margin-top:10px;font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:13px; font-weight:normal; color:#666666; text-decoration:none;}
 /*topo site*/
-#tophead{background-position:top; background-color:#FFFFFF; height:134px; position:relative;}
+#tophead{background-position:top; background-color:#FFFFFF; height:134px; position:relative; width:100%;}
 #searchbar{width:273px; height:46px; margin-top:0px; margin-right:200px; text-align:right; background-position:right; position:absolute; right:20px; background-image:url(images/fundo_search.gif);  background-repeat:no-repeat; margin-top:0px; margin-right:150px;	}
 #sitelogo{ border:0px;	background-image:url(images/logo.jpg); width:345px;	height:134px; background-repeat:no-repeat; background-position:top; 	margin-left:150px; font-size:0px; color:#FFFFFF;}
-#topnav{width:300px; margin-top:-40px; margin-right:180px; text-align:right; background-position:right; position:absolute;right:20px;}
+#topnav{width:300px; margin-top:-45px; margin-right:180px; text-align:right; background-position:right; position:relative;right:20px; left: 650px;}
 #topnav li {background-image:url(images/icon.jpg); background-position:left; background-repeat:no-repeat;}
 #topnav a {margin-left:10px; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:13px; font-weight:bold; color:#154c71;text-decoration:none; line-height:13px;}
 #topnav a:hover { font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:13px; font-weight:bold; color:#2991d8; text-decoration:none;}
 
 /*meio site*/
 #middlehead { height:223px; background-image:url(images/fundo_meio.jpg); background-repeat:repeat-x; }
-#middlenav { margin-left:0px; margin-right:0px; width:220px; height:223px; margin-left:150px; margin-right:10px; padding-top:10px; 	position:relative; background-image:url(images/fundo_menu.jpg); background-repeat:repeat-x;} 
-#middlenav li {	background-image:url(images/icon_menu.gif); background-position:left; background-repeat:no-repeat; padding-top:4px; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:12px;  color:#666666; }
+#middlenav { margin-left:0px; margin-right:0px; width:239px; height:223px; margin-left:135px; margin-right:3px; padding-top:1px; 	position:relative; background-image:url(images/fundo_menu.jpg); background-repeat:repeat-x;} 
+#middlenav li {	background-image:url(images/icon_menu.gif); background-position:left; background-repeat:no-repeat; padding-top:4px; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:13px;  color:#666666; margin-left:-10px;}
 #flashimages {
-    background: url("images/foto.jpg") repeat scroll 0 0 transparent;
     height: 219px;
-    left: 422px;
+    left: 380px;
     position: relative;
-    top: -229px;
-    width: 423px; } 
-#middlenav a { margin-left:20px; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:13px; font-weight:bold; color:#FFFFFF; text-decoration:none; line-height:13px; }
+    top: -220px;
+    width: 550px; 
+		
+	} 
+#middlenav a { margin-left:13px; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:13px; font-weight:bold; color:#FFFFFF; text-decoration:none; line-height:13px; }
 #middlenav a:hover { font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:13px; font-weight:bold; color:#FFFFFF; text-decoration:underline; }
 #forumtopics{  margin-right:180px; right:20px; margin-top:-250px; margin-left:20px; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:22px; font-weight:bold; color:#a7ce38; text-decoration:none; position:relative; }
 #forumtopics:after{ content:url(images/icon_forum.gif); margin-top:-20px; }
@@ -30,37 +32,68 @@ p {margin-top:10px;font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; fon
 
 /*principal site*/
 #main {background-color:#efeeee;}
-#leftcol {	background-color:#efeeee; margin-left:130px; width:250px; border:none; height:100%;}
-#usermenu { margin-bottom:10px; padding-right:25px; padding-top:1px; padding-bottom:10px;background-image:url(images/box_user.jpg); background-repeat:no-repeat; margin-top:5px;}
+#leftcol { background-image:url(images/box_left.png); background-repeat:repeat-y; margin-left:130px; width:250px; border:none; height:100%;}
+#usermenu { margin-bottom:10px; padding-right:25px; padding-bottom:15px;background-image:url(images/box_user_.jpg); background-repeat:no-repeat; margin-top:5px; background-position:top; padding-top:1px}
 #usermenu a {margin-left:15px; margin-top:20px; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:14px; font-weight:bold; color:#0e598a; text-decoration:none; line-height:13px; }
 #usermenu a:hover { font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:14px; font-weight:bold; color:#0c3754; text-decoration:underline; }
-#usermenu li { margin-top:5px; background-image:url(images/icon.jpg); background-position:left; background-repeat:no-repeat; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:14px;  color:#666666; font-style:normal;}
-.boxtitle h2,h3 { padding-top:2px;font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px;font-size:16px; font-weight:bold;color:#FFFFFF; text-align:right}
-#latestlinks {height:100%;margin-bottom:10px;  padding-right:25px;  padding-bottom:10px;padding-top:5px; background-image:url(images/box_user.jpg); background-repeat:no-repeat; }
-#lastlink { width:200px; margin-left:25px;margin-bottom:10px; padding-bottom:-5px;font-family:Verdana, Geneva, sans-serif; font-size-adjust:4px; font-size:12px;  color:#013559; }
-.link_url a {font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:12px; font-weight:bold; color:#175c8c; text-decoration:none;}
-.link_url a:hover {font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:12px; font-weight:bold; color:#092f49; text-decoration:underline;}
-.posted_by {font-family:Verdana, Geneva, sans-serif; font-size:11px; color:#333333; text-decoration:none; font-style:normal; padding-top:-15px}
+#usermenu li { margin-top:5px; background-image:url(images/icon.jpg); background-position:left; background-repeat:no-repeat; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:0px;  color:#666666; font-style:normal;}
+
+
+.boxtitle { padding-bottom:5px; padding-top:25px;}
+.boxtitle h2,h3 { padding-top:2px;font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px;font-size:0px; font-weight:bold;color:#FFFFFF; text-align:right; }
+.eventTitle { padding-top:2px;font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px;font-size:0px; font-weight:bold;color:#FFFFFF; text-align:left; }
+#latestlinks {height:100%;margin-bottom:10px; padding-right:35px;  padding-bottom:10px;padding-top:1px; background-image:url(images/box_user_1.jpg); background-position:top; background-repeat:no-repeat; overflow:hidden; }
+#lastlink { margin-left:15px; overflow:hidden; margin-top:10px;}
+#lastlink p{ margin:1px;}
+#link p{ margin:1px;}
+.link_title { background-image:url(images/icon1.jpg); background-position:left top; background-repeat:no-repeat;font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:13px; color:#0e598a; text-decoration:none; font-style:bold; font-weight:bold; margin-bottom:-2px; margin-top:15px; padding-left:10px;}
+.link_title1 {font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:13px; color:#0e598a; text-decoration:none; font-style:bold; font-weight:bold; margin-bottom:-2px; margin-top:15px; }
+
+.link_url a {font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:12px; font-weight:normal; color:#3c3c3c; text-decoration:none;}
+.link_url a:hover {font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:12px; font-weight:normal; color:#6a6a6a; text-decoration:underline;}
+.posted_by {font-family:Verdana, Geneva, sans-serif; font-size:10px; color:#3c3c3c; text-decoration:none; font-style:normal;border-bottom:1px; border-bottom-color:#8ec644; border-bottom-style:dashed; padding-bottom:2px;}
+.posted_by1 {font-family:Verdana, Geneva, sans-serif; font-size:10px; color:#3c3c3c; text-decoration:none; font-style:normal;border-bottom:1px; border-bottom-color:#8ec644; border-bottom-style:dashed; margin-bottom:15px;}
+
+
 .links_foot {margin-bottom:10px;margin-left:25px; font-family:Verdana, Geneva, sans-serif; font-size:11px; color:#333333; text-decoration:none; font-style:normal;}
-.links_foot a{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:12px; font-weight:bold; color:#87aa26; text-decoration:none;}
-.links_foot a:hover{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:12px; font-weight:bold; color:#aede29; text-decoration:underline;}
+.links_foot a{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:13px; font-weight:bold; color:#87aa26; text-decoration:none;}
+.links_foot a:hover{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:13px; font-weight:bold; color:#aede29; text-decoration:underline;}
 #container {background-color:#efeeee; height:100%}
 #container h1{ margin-left:30px;font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:22px; font-weight:bold; color:#87aa26;}
+#container h2{ font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:18px; font-weight:bold; color:#87aa26; border-bottom: 2px solid #7CE1D9;}
+.header{ font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:14px; font-weight:bold; color:#092f49; border-bottom:1px; border-bottom-style:dashed; border-bottom-color:#0d4162;}
+.item_class{ font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:13px; font-weight:normal; color:#454545;}
+.no_item{ margin-top:5px;font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:13px; font-weight:normal; color:#454545;}
+.no_item a{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:13px; font-weight:bold; color:#175c8c; text-decoration:none;}
+.no_item a:hover{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:13px; font-weight:bold; color:#092f49; text-decoration:underline;}
+#edit_delete{ margin-right:10px; width:80px;}
+.my_items_table { border:1px; border-color:#0000FF;}
+
+.delete a{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:13px; font-weight:bold; color:#fb0505; text-decoration:none;}
+.delete a:hover{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:13px; font-weight:bold; color:#fb0505; text-decoration:underline;}
+
+.edit a{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:13px; font-weight:bold; color:#32bc07; text-decoration:none;}
+.edit a:hover{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:13px; font-weight:bold; color:#32bc07; text-decoration:underline;}
+
+
+
 /*download imagens*/
-#thumbs {background-color:#FFFFFF; height:100%; margin-left:25px; margin-right:200px; padding-left:20px;}
+#thumbs { background-image:url(images/box_top.png); background-repeat:repeat-x; height:100%; margin-right:300px; padding-left:20px;}
+#thumbs li { padding-bottom:10px;}
 .caption a {margin-top:10px;font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:14px; font-weight:bold; color:#87aa26; text-decoration:none;}
 .caption a:hover {font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:14px; font-weight:bold; color:#092f49; text-decoration:underline;}
 div.image-title {margin-top:10px;font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:10px; font-weight:bold; color:#666666; text-decoration:none;}
-.uploaded_by {margin-top:10px;font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:12px; font-weight:normal; color:#666666; text-decoration:none;}
+.image-title {margin-top:10px;font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:10px; font-weight:bold; color:#666666; text-decoration:none;}
+.uploaded_by {margin-top:10px;font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:13px; font-weight:normal; color:#666666; text-decoration:none;}
 .next {margin-top:10px;font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:14px; font-weight:bold; color:#174e74; text-decoration:none;}
 .prev {margin-top:10px;font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:14px; font-weight:bold; color:#174e74; text-decoration:none;}
-.ss-controls {margin-top:10px;font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:14px; font-weight:bold; color:#174e74; text-decoration:none;}
+.ss-controls {margin-top:10px;font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:14px; font-weight:bold; color:#0e598a; text-decoration:none;}
+.download {margin-top:10px;font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:14px; font-weight:bold; color:#0e598a; text-decoration:none;}
 
+.news a {font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:13px; font-weight:bold; color:#175c8c; text-decoration:none;}
+.news a:hover {font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:13px; font-weight:bold; color:#092f49; text-decoration:underline;}
 
 #publications{margin-top:10px;font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:14px; font-weight:normal; color:#666666; text-decoration:none;}
-#link a{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:14px; font-weight:bold; color:#174e74; text-decoration:none;}
-#link a:hover{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:14px; font-weight:bold; color:#2f719f; text-decoration:underline;}
-#link{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:12px; font-weight:normal; color:#666666; text-decoration:none;}
 
 
 /*campo formulario*/
@@ -68,7 +101,8 @@ div.image-title {margin-top:10px;font-family:"Trebuchet MS", Arial, Helvetica, s
 #fieldform {font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:14px; font-weight:normal; color:#666666; text-decoration:none;}
 **/
 /*Profile*/
-#details{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:14px; font-weight:normal; color:#666666; text-decoration:none;}
+#content legend {font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:14px; font-weight:normal; color:#333333; text-decoration:none; }
+#details{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:14px; font-weight:normal; color:#333333; text-decoration:none;}
 #details a{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:14px; font-weight:bold; color:#174e74; text-decoration:none;}
 #details a:hover{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:14px; font-weight:bold; color:#2f719f; text-decoration:underline;}
 /*Edit profile details*/
@@ -85,23 +119,42 @@ div.image-title {margin-top:10px;font-family:"Trebuchet MS", Arial, Helvetica, s
 
 #id_password{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:14px; font-weight:normal; color:#666666; text-decoration:none;}
 
+#rightcol { background-image:url(images/box_right.png); background-repeat:repeat-y; margin-right:60px; width:300px; border:none; height:100%;}
+#events{ padding-right:25px; padding-left:25px; padding-top:10px; background-image:url(images/box_events.jpg); background-repeat:no-repeat; background-position:top; overflow:hidden; padding-right:15px;}
+
+.event_title a{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:13px; font-weight:bold; color:#0e598a; text-decoration:none; padding-right:10px;}
+.event_title a:hover{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:13px; font-weight:bold; color:#0e598a; text-decoration:underline;padding-right:10px;}
+
+.event_link a{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:11px; font-weight:bold; color:#0e598a; text-decoration:none; padding-right:10px;}
+.event_link a:hover{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:11px; font-weight:bold; color:#0e598a; text-decoration:underline;}
+
+.event_info{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:12px; font-weight:normal; color:#66666; text-decoration:none; overflow:hidden; padding-right:10px;}
+.pub_info{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:12px; font-weight:normal; color:#66666; text-decoration:none; overflow:hidden;}
+
+.event_type{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:11px; font-weight:normal; color:#aede29; text-decoration:none; overflow:hidden; padding-right:10px;}
+.event_type1{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:11px; font-weight:normal; color:#0e598a; text-decoration:none; overflow:hidden; padding-right:10px;}
+
+#event{overflow:hidden; }
+#event p{ margin:1px;}
+#publication p{ margin:1px;}
+.event_title{background-image:url(images/icon1.jpg); background-position:left top; background-repeat:no-repeat;font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:13px; color:#0e598a; text-decoration:none; font-style:bold; font-weight:bold; margin-bottom:-2px; margin-top:15px; padding-left:10px;}
+.event_title1{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:13px; color:#0e598a; text-decoration:none; font-style:bold; font-weight:bold; margin-bottom:-2px; margin-top:15px; padding-left:0px;}
+.event_title2{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:12px; color:#0e598a; text-decoration:none; font-style:bold; font-weight:bold;}
+.event_texto{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:12px; color:#0e598a; text-decoration:none; font-style:normal; font-weight:normal; }
+
+#event { margin-left:15px; overflow:hidden; margin-top:10px;}
 
 
-#rightcol {	background-color:#efeeee; margin-right:100px; width:300px; border:none;}
-#events{ margin-bottom:10px; padding-bottom:10px;padding-right:25px; padding-left:25px; padding-top:10px; background-image:url(images/box_events.jpg); background-repeat:no-repeat;font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:12px;  color:#666666; font-style:normal;}
-#events a{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:12px; font-weight:bold; color:#87aa26; text-decoration:none;}
-#events a:hover{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:12px; font-weight:bold; color:#aede29; text-decoration:underline;}
-#event_info{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:10px; font-weight:normal; color:#66666; text-decoration:none;}
-#thumbs_gallery{ padding-bottom:10px; margin-bottom:10px; padding-right:25px; padding-left:25px; padding-top:10px; background-image:url(images/box_events.jpg); background-repeat:no-repeat; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:12px;  color:#666666; font-style:normal;}
-#thumbs_gallery a{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:12px; font-weight:bold; color:#87aa26; text-decoration:none;}
-#thumbs_gallery a:hover{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:12px; font-weight:bold; color:#aede29; text-decoration:underline;}
+#thumbs_gallery{ margin-bottom:10px; padding-bottom:10px;padding-right:25px; padding-left:25px; padding-top:10px; background-image:url(images/box_events_1.jpg); background-repeat:no-repeat; background-position:top; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:13px;  color:#666666; font-style:normal; overflow:hidden; padding-right:15px;}
+#thumbs_gallery a{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:13px; font-weight:bold; color:#87aa26; text-decoration:none;}
+#thumbs_gallery a:hover{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:13px; font-weight:bold; color:#aede29; text-decoration:underline;}
 
-#content { border:none; margin:0px auto; width:500px; }
-.published_by {text-align:right; margin: -5px 0 10px 10px;}
+#content { border:none; margin:0px auto; width:520px; padding-left:70px; padding-right:40px;}
+.published_by {text-align:right; margin: -5px 0 10px 10px; font-size:11px;}
 
 #members_table{margin-top:10px;font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:14px; font-weight:normal; color:#666666; text-decoration:none;}
-..table_head{margin-top:10px;font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:12px; font-weight:normal; color:#666666; text-decoration:none;}
-..table_body a{margin-top:10px;font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:12px; font-weight:normal; color:#666666; text-decoration:none;}
+..table_head{margin-top:10px;font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:13px; font-weight:normal; color:#aede29; text-decoration:none; padding-left:3px;}
+..table_body a{margin-top:10px;font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:12px; font-weight:normal; color:#666666; text-decoration:none; padding-left:5px;}
 ..table_body a:hover{margin-top:10px;font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:12px; font-weight:normal; color:#666666; text-decoration:none;}
 .sorted_by{margin-top:10px;font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:10px; font-weight:normal; color:#666666; text-decoration:none;}
 #members_table a{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:14px; font-weight:bold; color:#174e74; text-decoration:none;}
@@ -109,21 +162,25 @@ div.image-title {margin-top:10px;font-family:"Trebuchet MS", Arial, Helvetica, s
 #forgot-password a{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:14px; font-weight:bold; color:#174e74; text-decoration:none;}
 #forgot-password a:hover{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:14px; font-weight:bold; color:#2f719f; text-decoration:underline;}
 
-#id_remember_me{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:12px; font-weight:normal; color:#666666; text-decoration:none;}
-#id_remember_me{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:12px; font-weight:normal; color:#666666; text-decoration:none;}
+#id_remember_me{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:13px; font-weight:normal; color:#666666; text-decoration:none;}
+#id_remember_me{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:13px; font-weight:normal; color:#666666; text-decoration:none;}
 
 
 .form p{}
 .required { color:green; }
-.help_text{margin-top:10px;font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:12px; font-weight:normal; color:#666666; text-decoration:none;}
+.help_text{margin-top:10px;font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:13px; font-weight:normal; color:#666666; text-decoration:none;}
 
-#event{margin-top:10px;font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:14px; font-weight:normal; color:#666666; text-decoration:none;}
-p#eventType{margin-top:10px;font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:14px; font-weight:normal; color:#666666; text-decoration:none;}.#eventTitle{margin-top:10px;font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:14px; font-weight:normal; color:#666666; text-decoration:none;}
 
 #content h2{ font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:18px; font-weight:bold; color:#87aa26; border-bottom: 2px solid #7CE1D9;}
+#content h1{ font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:22px; font-weight:bold; color:#174e74; margin-bottom:10px;}
 #content h3{ font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:18px; font-weight:bold; color:#174e74; margin: 10px 0px 10px 30px}
 .empty_data { font-family:Verdana, Geneva, sans-serif; font-size:11px; color:#333333; text-decoration:none; font-style:normal;}
 #footer { background-image:url(images/footer.jpg); background-repeat:repeat-x; height:40px;}
 /*inferior site*/
 
 .campo{ font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal; font-weight: normal; color: #625e5d; text-decoration: none; border:1px; height:20px; background-color:#ededed; border-color:#b2b2b2; padding-left:5px; padding-top:5px;}
+
+#event_add { margin:1px;}
+.form { margin:1px;}
+.formrow { width:400px; margin:2px;}
+.formrow p { margin:1px;}

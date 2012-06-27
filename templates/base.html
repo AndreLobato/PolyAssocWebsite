@@ -10,6 +10,7 @@
   {% block cms_head %}{% endblock cms_head %}
   {% block forum_head %}{% endblock forum_head %}
   <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/basic.css"> 
+  <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/full_style.css"> 
   <script src="{{ MEDIA_URL }}js/galleria/galleria-1.2.4.min.js"></script>
   <script src="{{ MEDIA_URL }}js/common.js"></script>  
   <script src="{{ MEDIA_URL }}js/galleria/themes/classic/galleria.classic.min.js"></script>
@@ -19,16 +20,13 @@
 <body>
 {% block body %}
 <div id="tophead">
-<<<<<<< experiment
-    <div id="searchbar">{% block search %}{% endblock search %}</div>
-    <div id="sitelogo"><h1>Polycheatologists Association</h1></div>    
-=======
+
     <div id="searchbar"><form method="get" action="/search/">{% block search %}
                         <input type="text" name='q' value={% if search_query %} {{ search_query }} {% else %} "" {% endif %} style="text-align:left;float:left;">         
                         <input type="submit" value="Search">{% endblock search %}
                         </form></div>
     <div id="sitelogo"><a href="/"><img src="{{ MEDIA_URL }}css/images/logo.jpg" alt="Polychaetologists Association"></a></div>    
->>>>>>> local
+
     <div id="topnav">
         <ul>
             <li><a href="/">Home</a></li>

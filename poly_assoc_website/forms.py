@@ -1,8 +1,11 @@
-from models import UsefulLink, Event, Publication
+from models import UsefulLink, Event, Publication, Photo
+
 from django.forms import ModelForm
+from cmsplugin_advancednews.forms import NewsForm
+
 
 class UsefulLinkForm(ModelForm):
-     class Meta:    
+     class Meta:
         model = UsefulLink
 
 class EventForm(ModelForm):
@@ -17,3 +20,14 @@ class PublicationForm(ModelForm):
     required_css_class = 'required'
     class Meta:
         model = Publication
+
+class PhotoForm(ModelForm):
+    error_css_class = 'error'
+    required_css_class = 'required'
+    class Meta:
+        model = Photo
+
+class CustomNewsForm(NewsForm):
+    error_css_class = 'error'
+    required_css_class = 'required'
+
