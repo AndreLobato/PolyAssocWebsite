@@ -15,21 +15,21 @@ class PublicationIndex(SearchIndex):
     author = CharField(model_attr='author')
     others_authors = CharField(model_attr='others_authors')
     publisher = CharField(model_attr='publisher')
-    url = URLField(model_attr='url')
+    url = CharField(model_attr='url')
     publication_date = DateTimeField(model_attr='publish_date')
 
 class MemberIndex(SearchIndex):
     text = CharField(document=True, use_template=True)
-    about_me = Charfield(model_attr='about_me')
+    about_me = CharField(model_attr='about_me')
     institution = CharField(model_attr='institution')
     work_location = CharField(model_attr='work_location')
-    research_area = Charfield(model_attr='research_area')
-    homepage_url = URLield(model_attr='homepage_url')
+    research_area = CharField(model_attr='research_area')
+    homepage_url = CharField(model_attr='homepage_url')
 
 
 class UsefulLinkIndex(SearchIndex):
     text = CharField(document=True, use_template=True)
-    url = URLField(model_attr='url')
+    url = CharField(model_attr='url')
     description = CharField(model_attr='description')
 
     
@@ -37,13 +37,13 @@ class EventIndex(SearchIndex):
     text = CharField(document=True, use_template=True)
     title = CharField(model_attr='title')
     location = CharField(model_attr='location')
-    url = URLField(model_attr='url')
-    details = Charfield(model_attr='details')
+    url = CharField(model_attr='url')
+    details = CharField(model_attr='details')
 
 class PhotoIndex(SearchIndex):
     text = CharField(document=True, use_template=True)
     name = CharField(model_attr='name')
-    description = Charfield(model_attr='description'
+    description = CharField(model_attr='description')
 
 site.register(Page, PageIndex)
 site.register(Publication, PublicationIndex)

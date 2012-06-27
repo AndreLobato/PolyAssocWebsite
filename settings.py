@@ -217,7 +217,7 @@ except ImportError:
 
 
 # Haystack settings
-HAYSTACK_SITECONF = 'search_indexes'
+HAYSTACK_SITECONF = 'search_site'
 HAYSTACK_SEARCH_ENGINE = 'whoosh'
 HAYSTACK_WHOOSH_PATH = os.path.join(PROJECT_ROOT, 'search_index')
 
