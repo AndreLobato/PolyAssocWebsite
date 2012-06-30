@@ -67,7 +67,7 @@ urlpatterns = patterns('',
 
     # Polychaetologists Association Website
 
-    (r'^my-items/(?P<user_pk>\d+)/', my_items),
+   (r'^my-items/(?P<user_pk>\d+)/', my_items),
     #url(r'^my_item/(P<item_class>\w+)/(?P<item_id>\d+)/', my_item_delete, name="my_item_delete"),
 
     url(r'^news/add/', add_news),

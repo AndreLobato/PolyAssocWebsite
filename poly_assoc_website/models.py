@@ -1,10 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-from userena.models import UserenaLanguageBaseProfile
-    
+from userena.models import UserenaBaseProfile
 
-class MemberProfile(UserenaLanguageBaseProfile):
+
+
+
+class MemberProfile(UserenaBaseProfile):
     about_me = models.TextField(blank=True)
     institution = models.CharField(max_length=200, help_text="Name of the place where you work at.")
     work_location = models.CharField(max_length=200, help_text="City and country where your institution is located.")
@@ -12,9 +14,12 @@ class MemberProfile(UserenaLanguageBaseProfile):
     homepage_url =  models.URLField(blank=True,verify_exists=True)
     curriculum_url = models.URLField(blank=True,verify_exists=True)
     pub_datetime = models.DateTimeField(auto_now_add=True)
-    
+    user = models.ForeignKey(User)
+
     def __unicode__(self):
         return '%s' % self.user.username
+
+
 
 
 

@@ -19,8 +19,8 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-LANGUAGES = [('en', 'en')]
-DEFAULT_LANGUAGE = 0
+
+
 
 DATABASES = {
     'default': {
@@ -128,7 +128,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'poly_assoc_website.context_processors.latest_links',
     'poly_assoc_website.context_processors.latest_events',
     'poly_assoc_website.context_processors.latest_photos',
-    'multilingual.context_processors.multilingual',
+    #'multilingual.context_processors.multilingual',
 )
 
 
@@ -145,23 +145,24 @@ TEMPLATE_DIRS = (
 
 #DJANGOBB_SRC = os.path.join(PROJECT_DIR,'./djangobb/')
 
-LANGUAGES = (
-    ('en', gettext('English')),
-    ('pt-BR', gettext("Brazil")),
-    ('fr', gettext('French')),
-    ('sp', gettext('Spanish')),
-    ('de', gettext('German')),
-    
-    
-)
+LANGUAGES=(
+    ('en', 'English'),
+    #('pt-br', 'Portuguese (Brazil)'),
+    #('es', 'Spanish'),
+) 
+
+
+
+DEFAULT_LANGUAGE = 0
+
 
 CMS_SOFTROOT = os.path.join(PROJECT_DIR, '/cms/')
 CMS_MEDIA_ROOT = os.path.join(PROJECT_DIR, '/media/cms/')
 CMS_MEDIA_URL = '/media/cms/'
-#CMS_LANGUAGES = {1:['en','fr','de','pt-BR'],}
+#CMS_LANGUAGES = [['en'],['English']]
 
 CMS_APPLICATIONS_URLS = (
-    ('cmsplugin_advancednews.urls', 'News'),
+    ('cmsplugin_advancednews.models', 'News'),
 )
 CMS_NAVIGATION_EXTENDERS = (
     ('cmsplugin_advancednews.navigation.get_nodes','News navigation'),
