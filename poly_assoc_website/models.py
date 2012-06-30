@@ -1,12 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-from userena.models import UserenaBaseProfile
+from userena.models import UserenaLanguageBaseProfile
 
 
 
 
-class MemberProfile(UserenaBaseProfile):
+class MemberProfile(UserenaLanguageBaseProfile):
     about_me = models.TextField(blank=True)
     institution = models.CharField(max_length=200, help_text="Name of the place where you work at.")
     work_location = models.CharField(max_length=200, help_text="City and country where your institution is located.")
@@ -70,7 +70,8 @@ class UsefulLink(models.Model):
 
 
 class Photo(models.Model):
-    name = models.CharField(max_length=128)
+    title = models.CharField(max_length=128)
+    slug_title = models.CharField(max_length=128, help_text="Unique character set identifier for this image")
     image = models.ImageField(upload_to='photos/')
     description = models.TextField(blank=True)
     pub_datetime = models.DateTimeField(auto_now_add=True)

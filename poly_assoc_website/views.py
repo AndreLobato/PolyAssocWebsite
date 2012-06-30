@@ -8,11 +8,10 @@ from django.views.generic.simple import direct_to_template
 from django.views.generic.date_based import archive_index
 from django.views.generic import list_detail
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required,user_passes_test
 from django.shortcuts import render_to_response, redirect
 from django.views.defaults import RequestContext
 from django.http import Http404, HttpResponse
-from userena.decorators import secure_required
-from guardian.decorators import permission_required_or_403
 import datetime as dt
 
 
@@ -33,9 +32,9 @@ def useful_links(request):
 
 def add_note(request):
     request.POST
-    
 
-#@permission_required_or_403('new_useful_link', login_url="/accounts/signin/")
+@login_required
+@user_passes_test(lambda u: u.has_perm('poly_assoc_website.add_usefullink'))
 def new_useful_link(request):
     c = {}
     c.update(csrf(request))
@@ -62,8 +61,8 @@ def latest_links(request):
     all_links = UsefulLink.objects.all()
     return archive_index(request, all_links, 'datetime', 4, extra_context={'total_links' : all_links.count() } )
 
-#@secure_required
-#@permission_required_or_403('event_add')
+@login_required
+@user_passes_test(lambda u: u.has_perm('poly_assoc_website.add_event'))
 def add_event(request):
     c = {}
     c.update(csrf(request)) 
@@ -111,8 +110,8 @@ def my_publications(request, user):
                                   {'object_list' : my_publications } )
 
 
-#@secure_required
-#@permission_required_or_403('publication_add')
+@login_required
+@user_passes_test(lambda u: u.has_perm('poly_assoc_website.add_publication'))
 def add_publication(request):
     c = {}
     c.update(csrf(request))
@@ -162,9 +161,8 @@ def photo_detail(request, name_photo):
     
 
 
-
-#@secure_required
-#@permission_required_or_403('add_photo')
+@login_required
+@user_passes_test(lambda u: u.has_perm('poly_assoc_website.add_photo'))
 def add_photo(request): 
     c = {}
     c.update(csrf(request))
@@ -197,8 +195,8 @@ def member_profile(request, username):
     return direct_to_template(request, template="poly_assoc_website/memberprofile_detail.html", extra_context={'object' : member})
 
 
-#@secure_required
-#@permission_required_or_403('add_news')
+@login_required
+@user_passes_test(lambda u: u.has_perm('cmsplugin_advancednews.add_news'))
 def add_news(request):    
     c = {}
     c.update(csrf(request))
@@ -221,8 +219,7 @@ def add_news(request):
 
 from cmsplugin_advancednews.models import News
 
-#@secure_required
-#@permission_required_or_403('my_items')
+@login_required
 def my_items(request,user_pk):
     c = {}
     c.update(csrf(request))
@@ -243,9 +240,8 @@ def my_items(request,user_pk):
         except TemplateDoesNotExist:
             raise Http404()
  
-#@secure_required
-#@permission_required_or_403('add_news')  
-
+@login_required
+@user_passes_test(lambda u: u.has_perm('cmsplugin_advancednews.change_news'))
 def news_edit(request, news_id):
     c = {}
     c.update(csrf(request))
@@ -259,7 +255,8 @@ def news_edit(request, news_id):
 
 
 
-
+@login_required
+@user_passes_test(lambda u: u.has_perm('poly_assoc_website.change_event'))
 def event_edit(request, event_id):
     c = {}
     c.update(csrf(request))   
@@ -280,7 +277,8 @@ def event_edit(request, event_id):
             form.error = "Event did not validate. Maybe some field are missing"
             return render_to_response('poly_assoc_website/event_edit.html', {'form' : form }, RequestContext(request))
    
-
+@login_required
+@user_passes_test(lambda u: u.has_perm('poly_assoc_website.change_photo'))
 def photo_edit(request, photo_id):
     c = {}
     c.update(csrf(request))   
@@ -304,6 +302,8 @@ def photo_edit(request, photo_id):
             form.error = "Photo did not validate. Maybe some field are missing"
             return render_to_response('poly_assoc_website/photo_edit.html', {'form' : form }, RequestContext(request))
 
+@login_required
+@user_passes_test(lambda u: u.has_perm('poly_assoc_website.change_usefullink'))
 def link_edit(request, link_id):
     c = {}
     c.update(csrf(request))   
@@ -326,6 +326,8 @@ def link_edit(request, link_id):
             form.error = "Useful link did not validate. Maybe some field are missing"
             return render_to_response('poly_assoc_website/usefullink_edit.html', {'form' : form }, RequestContext(request))
 
+@login_required
+@user_passes_test(lambda u: u.has_perm('poly_assoc_website.change_publication'))
 def publication_edit(request, pub_id):
     c = {}
     c.update(csrf(request))   
@@ -348,8 +350,8 @@ def publication_edit(request, pub_id):
             form.error = "Publication did not validate. Maybe some field are missing"
             return render_to_response('poly_assoc_website/publication_edit.html', {'form' : form }, RequestContext(request))
 
-#@secure_required
-#@permission_required_or_403('photo_delete')
+@login_required
+@user_passes_test(lambda u: u.has_perm('poly_assoc_website.delete_photo'))
 def photo_delete(request, photo_id):
     c = {}
     c.update(csrf(request))    
@@ -360,8 +362,8 @@ def photo_delete(request, photo_id):
     except ObjectDoesNotExist:
         raise Http404()
 
-#@secure_required
-#@permission_required_or_403('news_delete')
+@login_required
+@user_passes_test(lambda u: u.has_perm('cmsplugin_advancednews.delete_news'))
 def news_delete(request, news_id):
     c = {}
     c.update(csrf(request))    
@@ -373,8 +375,8 @@ def news_delete(request, news_id):
         raise Http404()
 
 
-#@secure_required
-#@permission_required_or_403('pub_delete')
+@login_required
+@user_passes_test(lambda u: u.has_perm('poly_assoc_website.delete_publication'))
 def publication_delete(request, pub_id):
     c = {}
     c.update(csrf(request))    
@@ -385,8 +387,8 @@ def publication_delete(request, pub_id):
     except ObjectDoesNotExist:
         raise Http404()
 
-#@secure_required
-#@permission_required_or_403('event_delete')
+@login_required
+@user_passes_test(lambda u: u.has_perm('poly_assoc_website.delete_event'))
 def event_delete(request, event_id):
     c = {}
     c.update(csrf(request))    
@@ -398,8 +400,8 @@ def event_delete(request, event_id):
         raise Http404()
 
 
-#@secure_required
-#@permission_required_or_403('link_delete')
+@login_required
+@user_passes_test(lambda u: u.has_perm('poly_assoc_website.delete_usefullink'))
 def link_delete(request, link_id):
     c = {}
     c.update(csrf(request))    
