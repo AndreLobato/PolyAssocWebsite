@@ -59,6 +59,7 @@ div {
 #content {
         
     margin: 0px 25%;
+    min-height:400px;
     padding: 10px;
     
     

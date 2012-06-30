@@ -10,6 +10,9 @@ PROJECT_ROOT = PROJECT_DIR
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
+SERVE_STATIC_FILES = True
+
+
 ADMINS = (
     # ('Your Name', 'your_email@domain.com'),
 )
