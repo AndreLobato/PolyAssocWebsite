@@ -20,6 +20,22 @@ div {
     padding: 2px;
 }
 
+
+.searchinput {
+    margin: 7px 0px 7px 8px;
+    text-align:left;
+    float:left;
+    width: 190px;
+}
+
+.searchbutton {
+    margin: 7px 8px 7px 1px;
+    float:right;
+    width: 60px;
+}
+
+
+
 #my_items_table{
 color: #666666;
     font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;

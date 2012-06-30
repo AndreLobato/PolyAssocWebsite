@@ -14,33 +14,38 @@
 <form action="" method="POST">{% csrf_token %}
     <h3>Event form</h3>
     {{ form.non_field_errors }}
+
         <div class='formrow'>
             <p>{{ form.event_type.label_tag }} : {{ form.event_type }} {{ form.event_type.errors }}</p> 
             <p class='help_text'>{{ form.event_type.help_text }}</p></div>
+
         <div class='formrow'>
             <p class="required">{{ form.title.label_tag }} : {{ form.title }} {{ form.title.errors }}</p> 
             <p class='help_text'>{{ form.title.help_text }}</p></div>
         <div class='formrow'>
-            <p class="required">{{ form.event_date.label_tag }} : {{ form.event_date }}             {{ form.event_date.errors }}</p>    
-            <p class="help_text">{{ form.event_date.help_text }}</p></div>
-        <div class='formrow'>
-            <p class="required">{{ form.event_time.label_tag }} : {{ form.event_time }}     {{ form.event_time.errors }}</p>    
-            <p class="help_text">{{ form.event_time.help_text }}</p></div>
-
+        <p class="required">{{ form.event_datetime.label_tag }} : {{ form.event_datetime }} {{ form.event_datetime.errors }}</p>
+            <p class="help_text">{{ form.event_datetime.help_text }}</p></div>
 
         <div class='formrow'>
             <p class="required">{{ form.location.label_tag }} : {{ form.location }} {{ form.location.errors }}</p> 
             <p class='help_text'>{{ form.url.help_text }}</p></div>
+
         <div class='formrow'>
             <p class="required">{{ form.url.label_tag }} : {{ form.url }} {{ form.url.errors }} </p> 
             <p class='help_text'>{{ form.url.help_text }}</p></div>
+
         <div class='formrow'>
             <p>{{ form.details.label_tag }} : {{ form.details }} {{ form.details.errors }}</p> 
             <p class='help_text'>{{ form.details.help_text }}</p>
+
         <p class='posted_by'>Posted by: <input type="hidden" name="posted_by" value="{{ user.id }}">{{ user.username }}</p></div>
 
 <input type="submit" value="Save">
 </form>
+
+<script type="text/javascript">
+   $( "#event_datetime" ).datetimepicker();
+</script>
 
 
 {% endblock content %}

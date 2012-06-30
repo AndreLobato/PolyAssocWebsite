@@ -8,22 +8,12 @@
         <div id="add_publication"><a href=""> Add publication </a></div>
         {% if object_list %}
         {% for pub in object_list %}
-<<<<<<< experiment
-        <div class="pub">
-            <h4> {{ pub.title }} </h4>
-            <p class="pub_info">Written by {{ pub.author }}, published at {{ pub.publish_date }} by {{ pub.publisher }}.</p>
-            <h5>Abstract</h5>
-            <p class="abstract"> {{ pub.abstract }}</p>
-            {% if pub.url %}<p class="url"><a href="{{ pub.url }}">Document URL: {{ pub.url }}</a></p>{% endif %}        
-=======
         <div class="publication">
             <p>{{ pub.author }}{% if pub.others_authors %} et al{% endif %}.  {{  pub.publish_date.year }}. <strong>{{ pub.title }}</strong>. {{pub.publisher}}. {% if pub.url %}URL link: <a href="{{ pub.url }}">{{ pub.url }}</a>{% endif %} </p>
             <p class="pub_info">Posted by {{ pub.author }}, published at {{ pub.pub_datetime }} by {{ pub.publisher }}.<br>
             <input type="button" class="toggle_link" value="Show/Hide Abstract"></p>
             <div class="toggle"></div> 
-            <div class="abstract" ><p style="display:none">Abstract: {{ pub.abstract }}</p></div>
-                 
->>>>>>> local
+            <div class="abstract" ><p style="display:none">Abstract: {{ pub.abstract }}</p></div>                
         </div>
         {% endfor %}{% endif %}
     </div>

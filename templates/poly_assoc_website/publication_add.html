@@ -18,21 +18,31 @@
     <div id="pub_add" class="form">
     <p class="comment">Required fields are green! </p>
     <form method="POST" action="">{% csrf_token %}
+
+        <div class='formrow'>
         <p class="required">  {{form.author.label_tag}}: {{ form.author }} {{ form.author.error }}</p>
-        <p class="help_text">{{ form.author.help_text }}</p>
-        <p class="required">  {{form.others_authors.label_tag}}: {{ form.others_authors }} {{ form.others_authors.error }}</p>
-        <p class="help_text">{{ form.others_authors.help_text }}</p>
+        <p class="help_text">{{ form.author.help_text }}</p></div>
+        <div class='formrow'>   
+        <p>  {{form.others_authors.label_tag}}: {{ form.others_authors }} {{ form.others_authors.error }}</p>
+        <p class="help_text">{{ form.others_authors.help_text }}</p></div>
+        <div class='formrow'>
         <p class="required">{{form.title.label_tag}}: {{ form.title }} {{ form.title.error }}</p>
-        <p class="help_text">{{ form.title.help_text }}</p>
+        <p class="help_text">{{ form.title.help_text }}</p></div>
+        <div class='formrow'>
         <p class="required">{{form.abstract.label_tag}}: {{ form.abstract }} {{ form.abstract.error }}</p>
-        <p class="help_text">{{ form.abstract.help_text }}</p>
+        <p class="help_text">{{ form.abstract.help_text }}</p></div>
+        <div class='formrow'>
         <p class="required">{{form.publisher.label_tag}}: {{ form.publisher }} {{ form.publisher.error }}</p>
-        <p class="help_text">{{ form.publisher.help_text }}</p>
+        <p class="help_text">{{ form.publisher.help_text }}</p></div>
+        <div class='formrow'>
         <p class="required">{{form.publish_date.label_tag}}: {{ form.publish_date }} {{ form.publish_date.error }}</p>
-        <p class="help_text">{{ form.publish_date.help_text }}</p>
+        <p class="help_text">{{ form.publish_date.help_text }}</p></div>
+        <div class='formrow'>
         <p>{{form.url.label_tag}}: {{ form.url }} {{ form.url.error }}</p>
-        <p class="help_text">{{ form.url.help_text }}</p>
+        <p class="help_text">{{ form.url.help_text }}</p></div>
+        <div class='formrow'>
         <p>{{ form.posted_by.label_tag }}: <input id="id_posted_by" type="hidden" name="posted_by" value="{{ user.id }}"> {{ user.username }} </p>
+        </div>
     </div>
 
     <input type="submit" value="Save Publication">

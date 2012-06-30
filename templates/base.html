@@ -35,8 +35,8 @@
 <div id='wrapper'>
 <div id="tophead">
     <div id="searchbar"><form method="get" action="/search/">{% block search %}
-                        <input type="text" name='q' value={% if search_query %} {{ search_query }} {% else %} "" {% endif %} style="text-align:left;float:left;">         
-                        <input type="submit" value="Search">{% endblock search %}
+                        <input class="searchinput" type="text" name='q' value={% if q %} {{ q }} {% else %} "" {% endif %} >         
+                        <input class="searchbutton" type="submit" value="Search">{% endblock search %}
                         </form></div>
     <div id="sitelogo"><a href="/"><img src="{{ MEDIA_URL }}css/images/logo.jpg" alt="Polychaetologists Association"></a></div>    
     <div id="topnav">

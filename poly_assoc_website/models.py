@@ -24,13 +24,13 @@ class MemberProfile(UserenaLanguageBaseProfile):
 
 
 class Publication(models.Model):
-    author = models.CharField(max_length=128, help_text="Use scientific name. e.g. STUART, E.P.")
-    others_authors = models.CharField(max_length=256,blank=True, help_text='Use scientific name separated by ";". e.g.: JAMES, A.L.; COLUMBUS, P.Z.')
+    author = models.CharField(max_length=128, help_text="Use scientific names only. e.g. STUART, E.P.")
+    others_authors = models.CharField(max_length=256, blank=True, help_text='e.g.: JAMES, A.L.; COLUMBUS, P.Z.')
     title = models.CharField(max_length=200)
     abstract = models.TextField()    
-    publisher = models.CharField(max_length=256, help_text="Name of article/thesis/dissertation publisher")
-    publish_date = models.DateField(help_text="Date when the article/thesis/dissertation was published")   
-    url = models.URLField(help_text="Link to publication online",blank=True,verify_exists=False)    
+    publisher = models.CharField(max_length=256, help_text="Name of publication publisher")
+    publish_date = models.DateField(help_text="Date when document it was published")   
+    url = models.URLField(help_text="URL to publication online",blank=True,verify_exists=False)    
     posted_by = models.ForeignKey(MemberProfile)
     pub_datetime = models.DateTimeField(auto_now_add=True)
 
@@ -45,8 +45,7 @@ class Event(models.Model):
                     ('Forum','Forum'))
     event_type = models.CharField(max_length=10, choices=EVENT_CHOICES)
     title = models.CharField(max_length=200)
-    event_date = models.DateField()
-    event_time = models.TimeField()
+    event_datetime = models.DateTimeField()
     location = models.TextField()
     url = models.URLField(verify_exists=True)
     details = models.TextField(blank=True)
