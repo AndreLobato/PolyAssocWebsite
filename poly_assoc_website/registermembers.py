@@ -24,7 +24,7 @@ import datetime as dt
 
 
 users = User.objects.all()
-member_group = Group.objects.get(name='Member Group')
+member_group = Group.objects.get(name='AssociationMembers')
 
 
 
