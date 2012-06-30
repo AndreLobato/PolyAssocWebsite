@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}Photo added {% endblock title %}
+
+{% block content %}
+<div><h2>Thanks for add a new Photo.</h2>
+<p> <a href="{% url poly_assoc_website.views.add_photo %}"> Upload another photo.</a> </p>
+</div>
+
+
+{% endblock content  %}

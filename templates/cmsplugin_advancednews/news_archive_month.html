@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block content %}
+<h1>{% blocktrans %}News for {{ month }}{% endblocktrans %}</h1>
+
+<ul>
+  {% for object in object_list %}
+    <li><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></li>
+  {% empty %}
+    <li>{% trans "No news for this month" %}</li>
+  {% endfor %}
+</ul>{% endblock content %}

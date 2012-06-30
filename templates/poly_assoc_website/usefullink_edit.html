@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Edit link </h2>
+<div id="link_add" class="form">
+<form action="" method="post">{% csrf_token %}
+<p class="required">{{ form.url.label_tag }}: {{ form.url }} {{ form.url.errors }} </p>
+<p class="help_text">{{ form.url.help_text }}</p>
+<p>{{ form.description.label_tag }}: {{ form.description }} {{ form.description.errors }} </p>
+<p class="help_text">{{ form.description.help_text }}</p>
+    
+<p>{{ form.posted_by.label_tag }}: <input id="id_posted_by" type="hidden" name="posted_by" value="{{ user.id }}"> {{ user.username }} </p>
+
+<input type="submit" value="Save link">
+</form>
+</div>
+{% endblock content %}

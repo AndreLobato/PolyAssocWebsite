@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %} Edit Publication {% endblock title %}}
+
+{% block content %}
+<h2>Edit publication</h2>
+{% if form.error %}
+    <p class='error'>Form did not validate. Check data format.</p>
+{% endif %}
+
+{% if form %}
+    {% comment %}{% if not profile.research_area or not profile.user.first_name or not profile.user.last_name or not profile.about_me %}
+    <p> It seems that you have not finished to edit your user profile.<br>
+    Please consider to "<a href="{% url userena_profile_edit user.username %}">{% trans "Edit your details" %} </a>."</p>
+    {% else %}{% endcomment %}
+    <div id="pub_add" class="form">
+    <p class="comment">Required fields are green! </p>
+    <form method="POST" action="">{% csrf_token %}
+        <p>{{ form.author.label_tag }}: <input type="hidden" name="author" value="{{ user.id }}">{{ user.get_full_name }}</p>
+        <p class="required">{{form.title.label_tag}}: {{ form.title }} {{ form.title.error }}</p>
+        <p class="help_text">{{ form.title.help_text }}</p>
+        <p class="required">{{form.abstract.label_tag}}: {{ form.abstract }} {{ form.abstract.error }}</p>
+        <p class="help_text">{{ form.abstract.help_text }}</p>
+        <p class="required">{{form.publisher.label_tag}}: {{ form.publisher }} {{ form.publisher.error }}</p>
+        <p class="help_text">{{ form.publisher.help_text }}</p>
+        <p class="required">{{form.publish_date.label_tag}}: {{ form.publish_date }} {{ form.publish_date.error }}</p>
+        <p class="help_text">{{ form.publish_date.help_text }}</p>
+        <p>{{form.url.label_tag}}: {{ form.url }} {{ form.url.error }}</p>
+        <p class="help_text">{{ form.url.help_text }}</p>
+    </div>
+
+    <input type="submit" value="Save Publication">
+    </form>
+    
+<script>
+    $(document).ready(function() {
+        $("#id_publish_date").datepicker();
+    });
+</script>
+    
+{% endif %}
+
+
+
+{% endblock content %}
