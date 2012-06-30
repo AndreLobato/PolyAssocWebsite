@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2> My Published Content </h2>
+
+    <table id="my_items_table">
+        <tr class="header">
+          <td width="600">&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><tr>
+         {% if my_news %}
+            <tr class="event_title"> <td bgcolor="#FFFFFF">News</td> 
+      </tr>
+            {% for new in my_news %}
+                <tr>
+                  <td> <div id="event">
+                  <p class="event_texto">ID:{{ new.id }}</p>
+                  <p class="event_title2">{{ new.title }}</p>
+                  <p class="posted_by">Created at: {{ new.pub_date }}</p></div></td>
+                  <td></td><td>&nbsp;</td><td width="1" >&nbsp;</td></tr>
+                <tr>
+                  <td class="edit_delete"><span class="edit"><a onclick="window.open('/admin/cmsplugin_advancednews/news/{{new.id}}/?_popup=1','Edit',  'width=800,height=800, scrollbars=yes');" href="javascript: void(0)"  >Edit</a></span> <span class="delete"><a href="{% url news_delete new.id %}">Delete</a></span></td>
+                  <td></td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+            {% endfor %}
+        {% else %}
+        <tr class="no_item"> <td>You haven't publish any News! <a onClick="window.open('/admin/cmsplugin_advancednews/news/add/?_popup=1','Add News/Note',  'width=800,height=800, scrollbars=yes');" href="javascript: void(0)">Write a News!</a></td> </tr>
+        {% endif %}
+        {% if my_photos %}
+            <tr class="event_title"> <td bgcolor="#FFFFFF">Photos </td> </tr>
+            {% for photo in my_photos %}
+            <tr>
+              <td>
+              <div id="event">
+                  <p class="event_texto">ID:{{ photo.id }}</p>
+                  <p class="event_title2">{{ photo.title }}</p>
+                  <p class="posted_by">Created at: {{ photo.pub_datetime }}</p></div>
+                          </td>          
+              <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr>
+              <td class="edit_delete"><span class="edit"><a href="{% url photo_edit photo.id %}">Edit</a></span> <span class="delete"> <a href="{% url photo_delete photo.id  %}">Delete</a></span></td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+            {% endfor %}
+        {% else %}
+        <tr class="no_item"> <td>You haven't uploaded any image! <a href="{% url add_photo %}">Upload a image!</td> </tr>
+        {% endif %}
+        {% if my_events %}
+            <tr class="event_title"><td bgcolor="#FFFFFF"> Events </td></tr>
+            {% for event in my_events %}
+                <tr>
+                  <td><div id="event">
+                  <p class="event_texto">ID:{{ event.id }}</p>
+                  <p class="event_title2">{{ event.title }}</p>
+                  <p class="posted_by">Created at: {{ event.pub_datetime }}</p></div>
+                  </td>
+              <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr>
+              <td class="edit_delete"><span class="edit"><a href="{% url event_edit event.id  %}">Edit</a></span> <span class="delete"> <a href="{% url event_delete event.id  %}">Delete</a></span></td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+            {% endfor %}
+        {% else %}
+        <tr class="no_item"> <td>You haven't shared any event yet! <a href="{% url add_event %}">Anounce an event!</td> </tr>
+        {% endif %}
+        {% if my_publications %}
+            <tr class="event_title"><td bgcolor="#FFFFFF">Publications</td> 
+      </tr>
+            {% for pub in my_publications %}
+                <tr>
+                  <td><div id="event">
+                  <p class="event_texto">ID:{{ pub.id }}</p>
+                  <p class="event_title2">{{ pub.title }}</p>
+                  <p class="posted_by">Created at: {{ pub.pub_datetime }}</p></div>
+</td>
+                  <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+                <tr>
+              <td class="edit_delete"><span class="edit"><a href="{% url publication_edit pub.id  %}">Edit</a></span> <span class="delete"> <a href="{% url publication_delete pub.id %}">Delete</a></span></td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+            {% endfor %}
+        {% else %}
+        <tr class="no_item"> <td>No publication was added to your list! <a href="{% url add_publication %}">Add publication!</td> </tr>
+        {% endif %}
+
+        {% if my_links %}
+            <tr class="event_title"><td bgcolor="#FFFFFF"> Links</td> </tr>
+            {% for link in my_links %}
+                <tr>
+                  <td><div id="event">
+                  <p class="event_texto">ID:{{ link.id }}</p>
+                  <p class="event_title2">{{ link.url }}</p>
+                  <p class="posted_by">Created at:{{ link.datetime }}</p></div>
+
+                  </td>
+                  <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+                <tr>
+              <td class="edit_delete"><span class="edit"><a href="{% url link_edit link.id  %}">Edit</a></span> <span class="delete"> <a href="{% url link_delete link.id %}">Delete</a></span></td>
+
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+            {% endfor %}
+        {% else %}
+        <tr class="no_item"> <td>You haven't shared any link yet! <a href="{% url add_link %}">Share a useful Link!</td> </tr>
+        {% endif %}
+
+       
+      
+    </table>
+
+{% endblock content %}
