@@ -1,3 +1,13 @@
 {% extends "base.html" %}
 
-{% block title %} Publications from {{  }}{% endblock title %}
+{% block title %} {{ pub.title }} {% endblock title %}
+
+{% block content %}
+<h2>{{ pub.title }}</h2>
+<p class='pub_field'><strong>Authors:</strong>{{ pub.author }}{% if pub.others_authors %}; {{ pub.others_authors }}{% endif %}.</p>
+<p class='pub_field'><strong>Publish date:</strong> {{pub.publish_date}}</p>
+<p class='pub_field'><strong>Publisher:</strong> {{pub.publisher}}</p>
+<p class='pub_field'><strong>URL:</strong><a href="{{pub.url}}"> {{pub.url}}</a></p>
+<p class='pub_field'><strong>Abstract:</strong> {{pub.abstract}}</p>
+<p>Published at {{ pub.pub_datetime }} by {{ pub.posted_by }}. </p>
+{% endblock content  %}

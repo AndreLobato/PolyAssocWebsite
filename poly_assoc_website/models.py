@@ -24,13 +24,13 @@ class MemberProfile(UserenaLanguageBaseProfile):
 
 
 class Publication(models.Model):
-    author = models.CharField(max_length=128, help_text="Use scientific names only. e.g. STUART, E.P.")
-    others_authors = models.CharField(max_length=256, blank=True, help_text='e.g.: JAMES, A.L.; COLUMBUS, P.Z.')
-    title = models.CharField(max_length=200)
-    abstract = models.TextField()    
-    publisher = models.CharField(max_length=256, help_text="Name of publication publisher")
+    author = models.CharField(max_length=128, help_text="Please, use scientific names only. e.g. STUART, E.P.")
+    others_authors = models.CharField(max_length=256, blank=True, help_text="Same as above, use dot-comma as separator")
+    title = models.CharField(max_length=200, help_text="Full title of your article.")
+    abstract = models.TextField(blank=True)    
+    publisher = models.CharField(max_length=256, help_text="Name of this publication publisher")
     publish_date = models.DateField(help_text="Date when document it was published")   
-    url = models.URLField(help_text="URL to publication online",blank=True,verify_exists=False)    
+    url = models.URLField(help_text="URL to publication online", blank=True)    
     posted_by = models.ForeignKey(MemberProfile)
     pub_datetime = models.DateTimeField(auto_now_add=True)
 

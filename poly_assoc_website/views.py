@@ -100,6 +100,13 @@ def show_all_events(request):
     return list_detail.object_list(request, Event.objects.all())
     
 
+
+
+def publication_detail(request,pub_id):  
+    publications = Publication.objects.all()
+    return list_detail.object_detail(request,queryset=publications, object_id=pub_id,
+                                    template_object_name='pub')
+
 def publications(request):
     publications = Publication.objects.all()
     return list_detail.object_list(request,queryset=publications)
@@ -116,12 +123,15 @@ def add_publication(request):
     c = {}
     c.update(csrf(request))
     if request.method == 'POST':
-        publication_dict = {'title' : request.POST['title'], 
+        publication_dict = {            'title' : request.POST['title'], 
                                         'abstract' : request.POST['abstract'],
                                         'publisher' : request.POST['publisher'],
                                         'publish_date' : request.POST['publish_date'],
                                         'url' : request.POST['url'],
-                                        'author' :  request.POST['author']}
+                                        'author' :  request.POST['author'],
+                                        'others_authors' : request.POST['others_authors'],
+                                        'pub_datetime': dt.datetime.now(),
+                                        'posted_by': request.POST['posted_by']}
         publication = PublicationForm(publication_dict,auto_id=True)
         if publication.is_valid():
             publication.save()
@@ -137,12 +147,6 @@ def add_publication(request):
             raise Http404() 
     
 
-
-
-def publications_detail(request):   
-    object_id = request.user.id
-    return list_detail.object_detail(request,queryset=events, 
-                    object_id=object_id)
 
 def photo_gallery(request, photo_slug='#1'):   
     photos = Photo.objects.all()

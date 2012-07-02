@@ -94,6 +94,7 @@ urlpatterns = patterns('',
     (r'^publication/add/complete/$', direct_to_template, {'template' : 'poly_assoc_website/publication_add_complete.html'}),
     url(r'^publication/(?P<pub_id>\d+)/edit/', publication_edit, name="publication_edit"),
     url(r'^publication/(?P<pub_id>\d+)/delete/', publication_delete, name="publication_delete"),
+    url(r'^publication/(?P<pub_id>\d+)/$', publication_detail, name="publication_detail"),
     
     (r'^photos/$', photo_gallery),
     (r'^photos/(\w+)$', photo_gallery),
@@ -103,7 +104,7 @@ urlpatterns = patterns('',
     url(r'^photo/(?P<photo_id>\d+)/delete/', photo_delete, name="photo_delete"),
 
     (r'^members/$', members_list),
-    (r'^members/(\w+)/', member_profile),
+    url(r'^members/(\w+)/', member_profile, name="member_profile"),
 )
 
 '''if (forum_settings.PM_SUPPORT):

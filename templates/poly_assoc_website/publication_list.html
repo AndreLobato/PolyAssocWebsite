@@ -10,7 +10,7 @@
         {% for pub in object_list %}
         <div class="publication">
             <p>{{ pub.author }}{% if pub.others_authors %} et al{% endif %}.  {{  pub.publish_date.year }}. <strong>{{ pub.title }}</strong>. {{pub.publisher}}. {% if pub.url %}URL link: <a href="{{ pub.url }}">{{ pub.url }}</a>{% endif %} </p>
-            <p class="pub_info">Posted by {{ pub.author }}, published at {{ pub.pub_datetime }} by {{ pub.publisher }}.<br>
+            <p class="pub_info">Posted by {{ pub.posted_by }} at {{ pub.pub_datetime }}. <a href="{% url publication_detail pub.id %}">More</a>.<br>
             <input type="button" class="toggle_link" value="Show/Hide Abstract"></p>
             <div class="toggle"></div> 
             <div class="abstract" ><p style="display:none">Abstract: {{ pub.abstract }}</p></div>                
