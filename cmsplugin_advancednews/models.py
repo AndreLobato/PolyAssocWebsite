@@ -5,7 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from cms.models import CMSPlugin
 
-from poly_assoc_website.models import MemberProfile
+from poly_assoc_website.models import User
 
 #from multilingual.translation import TranslationModel
 #from multilingual.exceptions import TranslationDoesNotExist
@@ -34,8 +34,7 @@ class News(models.Model):
     updated = models.DateTimeField(auto_now=True, editable=False)
     published = PublishedNewsManager()
     objects = models.Manager()
-    published_by = models.ForeignKey(MemberProfile)
-    
+    published_by = models.ForeignKey(User)
     
     class Meta:
         verbose_name = _('News')
