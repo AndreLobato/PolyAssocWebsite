@@ -8,7 +8,7 @@ class NewsIndex(SearchIndex):
     text = CharField(document=True, use_template=True)
     title = CharField(model_attr='title')
     content = CharField(model_attr='content')
-    published_by = CharField(model_attr='published_by__username')
+    published_by = CharField(model_attr='published_by')
    
 
 class PublicationIndex(SearchIndex):
