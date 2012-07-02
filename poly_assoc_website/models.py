@@ -77,7 +77,7 @@ class Photo(models.Model):
     posted_by = models.ForeignKey(MemberProfile)
     
     def __unicode__(self):
-        return '%s' % self.name
+        return '%s' % self.title
 
 
 
