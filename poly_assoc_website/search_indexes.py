@@ -45,7 +45,7 @@ class PhotoIndex(SearchIndex):
     text = CharField(document=True, use_template=True)
     title = CharField(model_attr='title')
     slug_title = CharField(model_attr='slug_title')
-    posted_by = CharField(model_attr='posted_by__username')
+    posted_by = CharField(model_attr='posted_by')
     description = CharField(model_attr='description')
 
 site.register(News, NewsIndex)
