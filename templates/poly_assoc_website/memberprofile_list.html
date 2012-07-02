@@ -11,7 +11,7 @@
 {% for member in object_list %}
     {% if member.research_area != '' %}
     <tr class='name'>
-      <td><strong>» </strong><a href="{% url userena.views.profile_detail member.user %}">{{ member.get_full_name_or_username }}<br />
+      <td><strong>» </strong><a href="/accounts/{{member.user.username}}/">{{ member.get_full_name_or_username }}<br />
     </a></td>
       <td width="20">&nbsp;</td>
       <td height="25">&nbsp;</td></tr>
