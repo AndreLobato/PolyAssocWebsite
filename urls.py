@@ -100,11 +100,11 @@ urlpatterns = patterns('',
     (r'^photos/(\w+)$', photo_gallery),
     url(r'^photos/add/$', add_photo, name="add_photo"),
     (r'^photos/add/complete/$', direct_to_template, {'template' : "poly_assoc_website/photo_add_complete.html"}),
-    url(r'^photo/(?P<photo_id>\d+)/edit/', photo_edit, name="photo_edit"),
-    url(r'^photo/(?P<photo_id>\d+)/delete/', photo_delete, name="photo_delete"),
+    url(r'^photo/(?P<photo_id>\d+)/edit/$', photo_edit, name="photo_edit"),
+    url(r'^photo/(?P<photo_id>\d+)/delete/$', photo_delete, name="photo_delete"),
 
     (r'^members/$', members_list),
-    url(r'^members/(\w+)/', member_profile, name="member_profile"),
+    url(r'^members/(\w+)/$', member_profile, name="member_profile"),
 )
 
 '''if (forum_settings.PM_SUPPORT):

@@ -6,7 +6,7 @@
     <div id="link">
     <p><a href="{{ object.url }}">{{ object.url }}</a></p>
     <p>{{ object.description }}</p>
-    <p>Posted by {{ object.posted_by }} at {{ object.pub_datetime }} </p>
+    <p>Posted by {{ object.posted_by }} at {{ object.pub_datetime.date }} </p>
     <hr>
     </div>
 {% endfor %}

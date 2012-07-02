@@ -43,7 +43,8 @@ class EventIndex(SearchIndex):
 
 class PhotoIndex(SearchIndex):
     text = CharField(document=True, use_template=True)
-    name = CharField(model_attr='name')
+    title = CharField(model_attr='title')
+    url = CharField(model_attr='url')
     description = CharField(model_attr='description')
 
 site.register(News, NewsIndex)
