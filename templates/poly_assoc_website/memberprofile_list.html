@@ -11,18 +11,14 @@
 {% for member in object_list %}
     {% if member.research_area != '' %}
     <tr class='name'>
-      <td><strong>» </strong><a href="/accounts/{{member.user.username}}/">{{ member.get_full_name_or_username }}<br />
-    </a></td>
-      <td width="20">&nbsp;</td>
-      <td height="25">&nbsp;</td></tr>
+      <td><strong>» </strong><a href="/accounts/{{member.user.username}}/">{{ member.get_full_name_or_username }}</a></td>
+      <td height="25"></td></tr>
     <tr class='info'>
       <td><strong>- Research area: </strong>{{ member.research_area }}</td>
-      <td>&nbsp;</td>
       <td height="20"><strong>- Work place:</strong> {{ member.institution }}</td>
     </tr>
     <tr class='info'>
       {% if member.homepage_url %}<td><strong>- Homepage:</strong> {{ member.homepage_url }}</td>{%endif%}
-      <td>&nbsp;</td>
       {% if member.curriculum_url %}<td height="20"><strong>- CV:</strong> {{ member.curriculum_url }}</td>{%endif%}
     </tr>
     {% endif %}
