@@ -5,7 +5,7 @@
 <h2>Association Members</h2>
 
 <div id="members_table">
-<table cellpadding="0" cellspacing="0">
+<table cellpadding="1" cellspacing="1">
 {% for member in object_list %}
     {% if member.research_area != '' %}
     <tr class="member_row">
@@ -17,6 +17,7 @@
       {% if member.curriculum_url %}<td height="20"><strong>- CV: </strong> <a href="{{ member.curriculum_url }}">click here </a></td>{%endif%}
       <td height="25"></td>
     </tr>
+    <tr></tr>
     {% endif %}
 {% endfor %}
 
