@@ -176,6 +176,7 @@ def add_photo(request):
                                         'slug_title' : request.POST['slug_title'],
                                         'pub_datetime': dt.datetime.now(),
                                         'posted_by': request.POST['posted_by'],
+                                        'description' : request.POST['description'],
                                         'image' : request.FILES,
         }
         form = PhotoForm(request.POST
@@ -308,7 +309,7 @@ def photo_edit(request, photo_id):
         form = PhotoForm(request.POST,request.FILES, instance=photo)
         if form.is_valid():
             form.save()
-            return redirect('/my-items/%d/' % photo.uploaded_by.id)
+            return redirect('/my-items/%d/' % photo.posted_by.id)
         else:
             form.error = "Photo did not validate. Maybe some field are missing"
             return render_to_response('poly_assoc_website/photo_edit.html', {'form' : form }, RequestContext(request))
@@ -356,7 +357,7 @@ def publication_edit(request, pub_id):
         form = PublicationForm(request.POST,instance=publication)
         if form.is_valid():
             form.save()
-            return redirect('/my-items/%d/' % publication.author.id)
+            return redirect('/my-items/%d/' % publication.posted_by.id)
         else:
             form.error = "Publication did not validate. Maybe some field are missing"
             return render_to_response('poly_assoc_website/publication_edit.html', {'form' : form }, RequestContext(request))
@@ -369,7 +370,7 @@ def photo_delete(request, photo_id):
     try:
         photo = Photo.objects.get(id=photo_id)
         photo.delete()
-        return redirect('/my-items/%d/' % photo.uploaded_by.id)
+        return redirect('/my-items/%d/' % photo.posted_by.id)
     except ObjectDoesNotExist:
         raise Http404()
 
