@@ -14,7 +14,6 @@ from django.views.defaults import RequestContext
 from django.http import Http404, HttpResponse
 import datetime as dt
 
-
 from django.template import TemplateDoesNotExist
 from django.core.exceptions import ObjectDoesNotExist
 from poly_assoc_website.forms import UsefulLinkForm, EventForm, PublicationForm, PhotoForm
@@ -236,10 +235,10 @@ def my_items(request,user_pk):
     c = {}
     c.update(csrf(request))
     user = MemberProfile.objects.get(user=user_pk)
-    if request.method == 'GET':
+    if request.method == 'GET' and request.user.pk == int(user_pk):
         my_photos = Photo.objects.filter(posted_by=user.pk)
         my_news = News.objects.filter(published_by=user.pk)
-        my_pubs = Publication.objects.filter(author=user.pk)
+        my_pubs = Publication.objects.filter(posted_by=user.pk)
         my_events = Event.objects.filter(posted_by=user.pk)
         my_links = UsefulLink.objects.filter(posted_by=user.pk)
         context = { 'my_photos' : my_photos,
@@ -251,6 +250,8 @@ def my_items(request,user_pk):
             return render_to_response('poly_assoc_website/my_items.html', context, RequestContext(request))
         except TemplateDoesNotExist:
             raise Http404()
+    else:
+        raise Http404   ()
  
 @login_required
 @user_passes_test(lambda u: u.has_perm('cmsplugin_advancednews.change_news'))
@@ -369,8 +370,9 @@ def photo_delete(request, photo_id):
     c.update(csrf(request))    
     try:
         photo = Photo.objects.get(id=photo_id)
-        photo.delete()
-        return redirect('/my-items/%d/' % photo.posted_by.id)
+        if request.user.id == photo.posted_by.id:
+            photo.delete()
+        return redirect('/my-items/%d/' % request.user.id)
     except ObjectDoesNotExist:
         raise Http404()
 
@@ -381,8 +383,9 @@ def news_delete(request, news_id):
     c.update(csrf(request))    
     try:
         news = News.objects.get(id=news_id)
-        news.delete()
-        return redirect('/my-items/%d/' % news.published_by.id)
+        if request.user.id == news.published_by.id:
+            news.delete()
+        return redirect('/my-items/%d/' % request.user.id)
     except ObjectDoesNotExist:
         raise Http404()
 
@@ -394,8 +397,9 @@ def publication_delete(request, pub_id):
     c.update(csrf(request))    
     try:
         publication = Publication.objects.get(id=pub_id)
-        publication.delete()
-        return redirect('/my-items/%d/' % publication.author.id)
+        if request.user.id == publication.posted_by.id:
+            publication.delete()
+        return redirect('/my-items/%d/' % request.user.id)
     except ObjectDoesNotExist:
         raise Http404()
 
@@ -406,8 +410,9 @@ def event_delete(request, event_id):
     c.update(csrf(request))    
     try:
         event = Event.objects.get(id=event_id)
-        event.delete()
-        return redirect('/my-items/%d/' % event.posted_by.id)
+        if request.user.id == event.posted_by.id:
+            event.delete()
+        return redirect('/my-items/%d/' % request.user.id)
     except ObjectDoesNotExist:
         raise Http404()
 
@@ -419,8 +424,9 @@ def link_delete(request, link_id):
     c.update(csrf(request))    
     try:
         link = UsefulLink.objects.get(id=link_id)
-        link.delete()
-        return redirect('/my-items/%d/' % link.posted_by.id)
+        if request.user.id == link.posted_by.id:
+            link.delete()
+        return redirect('/my-items/%d/' % request.user.id)
     except ObjectDoesNotExist:
         raise Http404()
 
