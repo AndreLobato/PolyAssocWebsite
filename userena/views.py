@@ -496,10 +496,7 @@ def profile_edit(request, username, edit_profile_form=EditProfileForm,
     user_initial = {'first_name': user.first_name,
                     'last_name': user.last_name}
 
-    form = edit_profile_form(instance=profile, initial=user_initial)
-   
-    if not form.pub_datetime:
-	form.pub_datetime = datetime.datetime.now() 
+    form = edit_profile_form(instance=profile, initial=user_initial) 
 
     if request.method == 'POST':
         form = edit_profile_form(request.POST, request.FILES, instance=profile,
