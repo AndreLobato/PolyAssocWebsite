@@ -212,7 +212,7 @@ class EditProfileForm(forms.ModelForm):
     last_name = forms.CharField(label=_(u'Last name'),
                                 max_length=30,
                                 required=False)
-    pub_datetime = forms.DateTimeField(auto_now_add=True)
+    pub_datetime = forms.DateTimeField()
 
     def __init__(self, *args, **kw):
         super(forms.ModelForm, self).__init__(*args, **kw)
