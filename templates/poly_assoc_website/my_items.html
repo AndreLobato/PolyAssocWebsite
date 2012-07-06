@@ -24,7 +24,9 @@
                 </tr>
             {% endfor %}
         {% else %}
+        {% if user.is_staff %}
         <tr class="no_item"> <td>You haven't publish any News! <a onClick="window.open('/admin/cmsplugin_advancednews/news/add/?_popup=1','Add News/Note',  'width=800,height=800, scrollbars=yes');" href="javascript: void(0)">Write a News!</a></td> </tr>
+        {% endif %}
         {% endif %}
         {% if my_photos %}
             <tr class="event_title"> <td bgcolor="#FFFFFF">Photos </td> </tr>
