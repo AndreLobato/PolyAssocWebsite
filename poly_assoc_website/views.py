@@ -172,12 +172,19 @@ def add_photo(request):
     c.update(csrf(request))
     if request.method == 'POST':
         from django.template.defaultfilters import slugify
-        form = PhotoForm(request.POST,request.FILES)
+        photo_dict = {                   'title' : request.POST['title'], 
+                                        'slug_title' : request.POST['slug_title'],
+                                        'pub_datetime': dt.datetime.now(),
+                                        'posted_by': request.POST['posted_by'],
+                                        'image' : request.FILES,
+        }
+        form = PhotoForm(request.POST
+                        ,request.FILES)
         if form.is_valid():
             form.save()
             return redirect('/photos/add/complete/')
         else:
-            form.error = "Photo did not validate. Maybe some fields are missing"
+            form.error = "Photo form did not validate. Please contact the administrator about this."
             return render_to_response('poly_assoc_website/photo_add.html', {'form' : form }, RequestContext(request))
     if request.method == 'GET':                         
         form = PhotoForm(auto_id=True)
