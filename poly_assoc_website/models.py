@@ -16,6 +16,9 @@ class MemberProfile(UserenaLanguageBaseProfile):
     pub_datetime = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User)
 
+    def get_absolute_url(self):
+        return '/accounts/%s/' % self.user.username
+
     def __unicode__(self):
         return '%s' % self.user.username
 
@@ -35,7 +38,7 @@ class Publication(models.Model):
     pub_datetime = models.DateTimeField(auto_now_add=True)
 
     def get_absolute_url(self):
-        return "/publications/"
+        return "/publication/%i/" % self.id
 
     def __unicode__(self):
         return self.author + ' ' + str(self.publish_date.year) + '. ' + self.title
@@ -52,6 +55,9 @@ class Event(models.Model):
     posted_by = models.ForeignKey(MemberProfile)
     pub_datetime = models.DateTimeField(auto_now_add=True)
 
+    def get_absolute_url(self):
+        return '/event/?event_id=%i' % self.id
+
     def __unicode__(self):
         return '%s' % self.title
         
@@ -64,6 +70,9 @@ class UsefulLink(models.Model):
                                 related_name='name')
     pub_datetime = models.DateTimeField(auto_now_add=True)
     
+    def get_absolute_url(self):
+        return '/useful-links/'
+
     def __unicode__(self):
         return '%s' % self.url
 
@@ -75,6 +84,9 @@ class Photo(models.Model):
     description = models.TextField(blank=True)
     pub_datetime = models.DateTimeField(auto_now_add=True)
     posted_by = models.ForeignKey(MemberProfile)
+
+    def get_absolute_url(self):
+        return '/photos/#%s' % self.slug_title
     
     def __unicode__(self):
         return '%s' % self.title
