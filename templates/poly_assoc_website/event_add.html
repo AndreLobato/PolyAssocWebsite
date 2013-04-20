@@ -8,27 +8,28 @@
 
 {% block content %}
 <div id="form">
-<h2>Add new event on the site</h2>
-<form action="" method="POST">{% csrf_token %}
-    <h3>Event form</h3>
-    {{ form.non_field_errors }}
-    {% for field in form %}
-    {% if field.label_tag != form.posted_by.label_tag %}
-    <div class='formrow'>
-            <p class="{{ field.css_classes }}">{{ field.label_tag }} : {{ field }}</p> 
-            {% if field.errors %}<p class="{{ form.error_css_class }}">{{ field.errors }}</p>{% endif %}
-            <p class='help_text'>{{ field.help_text }}</p><br>
-    </div>
+    {% if form.error %}
+        <p>{{ form.error }}</p>
     {% endif %}
-    {% endfor %}
-    <p class='posted_by'>Posted by: <input type="hidden" name="posted_by" value="{{ user.id }}">{{ user.username }}</p>
+    <h2>Add new event on the site</h2>
+    <form action="" method="POST">{% csrf_token %}
+        <h3>Event form</h3>
+        {{ form.non_field_errors }}
+        {% for field in form %}
+        {% if field.label_tag != form.posted_by.label_tag %}
+        <div class='formrow'>
+                <p class="{{ field.css_classes }}">{{ field.label_tag }} : {{ field }}</p> 
+                {% if field.errors %}<p class="{{ form.error_css_class }}">{{ field.errors }}</p>{% endif %}
+                <p class='help_text'>{{ field.help_text }}</p><br>
+        </div>
+        {% endif %}
+        {% endfor %}
+        <p class='posted_by'>Posted by: <input type="hidden" name="posted_by" value="{{ user.id }}">{{ user.username }}</p>
 
-<input type="submit" value="Save">
-</form>
+        <input type="submit" value="Save">
+    </form>
 </div>
 <script type="text/javascript">
    $( "#event_datetime" ).datetimepicker();
 </script>
-
-
 {% endblock content %}
