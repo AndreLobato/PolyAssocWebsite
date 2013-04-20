@@ -39,12 +39,12 @@ def new_useful_link(request):
     c.update(csrf(request))
     if request.method == 'POST':
         link = UsefulLinkForm(request.POST, auto_id=True)
-        #if link.is_valid():
-        link.save()
-        #else:
-        #    link = UsefulLinkForm(request.POST)
-        #    link.error = 'Data format did not validate.'
-        #    return render_to_response('poly_assoc_website/usefullink_add.html', {'form' : link }, RequestContext(request))
+        if link.is_valid():
+            link.save()
+        else:
+            link = UsefulLinkForm(request.POST)
+            link.error = 'Data format did not validate.'
+            return render_to_response('poly_assoc_website/usefullink_add.html', {'form' : link }, RequestContext(request))
     else:
         link = UsefulLinkForm()
     try:
