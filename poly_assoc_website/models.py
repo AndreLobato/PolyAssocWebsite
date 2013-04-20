@@ -17,7 +17,7 @@ class MemberProfile(UserenaLanguageBaseProfile):
     user = models.ForeignKey(User)
 
     def get_absolute_url(self):
-        return '/accounts/%s/' % self.user.username
+        return '/members/%s/' % self.user.username
 
     def __unicode__(self):
         return '%s' % self.user.username
