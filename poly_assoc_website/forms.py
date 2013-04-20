@@ -33,3 +33,4 @@ class CustomNewsForm(NewsForm):
     error_css_class = 'error'
     required_css_class = 'required'
 
+

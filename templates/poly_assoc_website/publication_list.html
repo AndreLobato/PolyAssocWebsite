@@ -5,7 +5,7 @@
 {% block content %}
     <div id="publications">
         <h2>Members Association Publications</h2>
-        <div id="add_publication"><a href=""> Add publication </a></div>
+        {% if user.is_authenticated %}<div id="add_publication"><a href="{% url add_publication %}"> Share a publication! </a></div>{% endif %}
         {% if object_list %}
         {% for pub in object_list %}
         <div class="publication">

@@ -149,7 +149,7 @@ div.image-title {margin-top:10px;font-family:"Trebuchet MS", Arial, Helvetica, s
 #thumbs_gallery a{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:13px; font-weight:bold; color:#87aa26; text-decoration:none;}
 #thumbs_gallery a:hover{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:13px; font-weight:bold; color:#aede29; text-decoration:underline;}
 
-#content { border:none; margin:0px auto; width:520px; padding-left:70px; padding-right:40px;}
+#content { border:none; margin:0px auto; width:520px; /*padding-left:70px; padding-right:40px;*/}
 .published_by {text-align:right; margin: -5px 0 10px 10px; font-size:11px;}
 
 #members_table{margin-top:10px;font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size-adjust:4px; font-size:14px; font-weight:normal; color:#666666; text-decoration:none;}

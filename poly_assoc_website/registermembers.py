@@ -1,7 +1,7 @@
 #!/home/boca/.virtualenvs/PolyEnv/bin/python
 
 
-import warnings
+import warningss
 
 with warnings.catch_warnings():
     warnings.filterwarnings("ignore",category=DeprecationWarning)
@@ -23,14 +23,12 @@ from django.contrib.auth.models import Group
 import datetime as dt
 
 
-users = User.objects.all()
-member_group = Group.objects.get(name='AssociationMembers')
-
-
 
 log_file = open('registred_members.txt','wb')
 
 def register_members():
+	users = User.objects.all()
+	member_group = Group.objects.get(name='AssociationMembers')
 	for user in users:
 		if user.is_authenticated():
 			u_groups = user.groups.all()

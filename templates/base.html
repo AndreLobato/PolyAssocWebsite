@@ -80,7 +80,9 @@
                         <li><a href="{% url poly_assoc_website.views.add_publication %}">{% trans "Add Publication" %}</a></li>                  
                         <li><a href="{% url poly_assoc_website.views.new_useful_link %}">{% trans "Add New Useful Link" %}</a></li>
                         {% if user.is_staff %}
-                        <li><a onClick="window.open('/admin/cmsplugin_advancednews/news/add/?_popup=1','Add News/Note',  'width=800,height=800, scrollbars=yes');" href="javascript: void(0)">Publish News</a></li>                   
+                        <li>
+                          {% comment %}<a onClick="window.open('/admin/cmsplugin_advancednews/news/add/?_popup=1','Add News/Note',  'width=800,height=800, scrollbars=yes');" href="javascript: void(0)"> {%endcomment%}
+                          <a href="{% url add_news %}">Publish News</a></li>                   
                         {% endif %}
                         <li><a href="{% url poly_assoc_website.views.signout %}"> Logout </a></li>                      
                     </ul>                                             

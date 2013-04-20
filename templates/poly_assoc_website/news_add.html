@@ -3,16 +3,36 @@
 {% block title %}Add News / Notes{% endblock title %}
 
 {% block content %}
-<div id="news-form">
-<form method="POST" action="" enctype="multipart/form-data">{% csrf_token %}
+<div id="content">
+	<div id="news-form">
+		<h2>Share some information!</h2>
+		<form method="POST" action="" enctype="multipart/form-data">{% csrf_token %}
+		{{ form.non_field_errors }}
+			<div class='formrow'>
+            	<p class="{{ form.title.css_classes }}">{{ form.title.label_tag }} : {{ form.title }}</p> 
+            	{% if form.title.errors %}<p class="{{ form.error_css_class }}">{{ form.title.errors }}</p>{% endif %}
+            	<p class='help_text'>{{ form.title.help_text }}</p><br>
+			</div>
+			<div class='formrow'>
+            	<p class="{{ form.category.css_classes }}">{{ form.category.label_tag }} : {{ form.category }}</p> 
+            	{% if form.category.errors %}<p class="{{ form.error_css_class }}">{{ form.category.errors }}</p>{% endif %}
+            	<p class='help_text'>{{ form.category.help_text }}</p><br>
+			</div>
+			<div class='formrow'>
+            	<p class="{{ form.is_published.css_classes }}">{{ form.is_published.label_tag }} : {{ form.is_published }}</p> 
+            	{% if form.is_published.errors %}<p class="{{ form.error_css_class }}">{{ form.is_published.errors }}</p>{% endif %}
+            	<p class='help_text'>{{ form.is_published.help_text }}</p><br>
+			</div>
+			<div class='formrow'>
+            	<p class="{{ form.content.css_classes }}" style="width:50%;">{{ form.content.label_tag }} : {{ form.content }}</p> 
+            	{% if form.content.errors %}<p class="{{ form.error_css_class }}">{{ form.content.errors }}</p>{% endif %}
+            	<p class='help_text'>{{ form.content.help_text }}</p><br>
+			</div>
+			<p class="{{ form.published_by.css_classes }}">{{ form.published_by.label_tag }}<input type="hidden" name="published_by" value="{{ user.id }}"> : {{ user.username }}</p>
+			<p class="{{ form.pub_date.css_classes }}">{{ form.pub_date.label_tag }}<input type="hidden" name="pub_date" value="{{ form.pub_date.value }}"> : {{ form.pub_date}}</p>
 
-{% for field in form %}
-<p>{{ field.label_tag }} : {{ field }} </p>
-{% endfor %}
-
-{{ form.as_p }}
-<div id="content"></div>
-<input type="submit" value="Save New/Note">
-</form>
+		<input type="submit" value="Save New/Note">
+		</form>
+	</div>
 </div>
 {% endblock content %}

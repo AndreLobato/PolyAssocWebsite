@@ -43,12 +43,15 @@ urlpatterns = patterns('',
 
     # Admin
     url(r'^admin/', include(admin.site.urls)),
-    
+
+    (r'^news/add/complete', direct_to_template, {'template':"poly_assoc_website/news_add_complete.html"}),
+
     url(r'^news/', include('cmsplugin_advancednews.urls')),
 
     url(r'^news/(?P<news_id>\d+)/edit/', news_edit, name="news_edit"),
     url(r'^news/(?P<news_id>\d+)/delete/', news_delete, name="news_delete"),
-
+    url(r'^news/add/', add_news, name="add_news"),
+    
     #Haystack
     
     (r'^search/', include('haystack.urls')),

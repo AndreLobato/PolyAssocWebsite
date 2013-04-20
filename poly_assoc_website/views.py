@@ -16,7 +16,7 @@ import datetime as dt
 
 from django.template import TemplateDoesNotExist
 from django.core.exceptions import ObjectDoesNotExist
-from poly_assoc_website.forms import UsefulLinkForm, EventForm, PublicationForm, PhotoForm
+from poly_assoc_website.forms import UsefulLinkForm, EventForm, PublicationForm, PhotoForm, CustomNewsForm
 from poly_assoc_website.models import MemberProfile, Event, Publication,UsefulLink, Photo
 from poly_assoc_website.views import *
 from cmsplugin_advancednews.forms import NewsForm
@@ -203,7 +203,7 @@ def members_list(request):
 def member_profile(request, username):
     user = User.objects.get(username=username)
     member = MemberProfile.objects.get(user=user.id)
-    return direct_to_template(request, template="poly_assoc_website/memberprofile_detail.html", extra_context={'object' : member})
+    return direct_to_template(request, template="poly_assoc_website/memberprofile_detail.html", extra_context={'profile' : member})
 
 
 @login_required
@@ -213,7 +213,8 @@ def add_news(request):
     c.update(csrf(request))
     if request.method == 'POST':
         from django.template.defaultfilters import slugify
-        form = NewsForm(request.POST,request.FILES)
+        request.POST['slug'] = slugify(request.POST['title'])
+        form = CustomNewsForm(request.POST,request.FILES)
         if form.is_valid():
             form.save()
             return redirect('/news/add/complete/')
@@ -221,14 +222,34 @@ def add_news(request):
             form.error = "News did not validate. Maybe some field are missing"
             return render_to_response('poly_assoc_website/news_add.html', {'form' : form }, RequestContext(request))
     if request.method == 'GET':        
-        form = NewsForm()
-        form.fields['content'] = ''
+        form = CustomNewsForm(auto_id=True)
         try:
             return render_to_response('poly_assoc_website/news_add.html', {'form' : form,}, RequestContext(request))
         except TemplateDoesNotExist:
             raise Http404()
-
 from cmsplugin_advancednews.models import News
+
+@login_required
+@user_passes_test(lambda u: u.has_perm('poly_assoc_website.change_news'))
+def news_edit(request, news_id):
+    c = {}
+    c.update(csrf(request))   
+    news = News.objects.get(id=news_id)
+    user = news.published_by
+    if request.method == 'GET':       
+        #form = CustomNewsForm(instance=news)
+        #try:
+        return render_to_response('poly_assoc_website/news_add.html', {'form' : form,}, RequestContext(request))
+        #except TemplateDoesNotExist:
+        #    raise Http404()
+    elif request.method == 'POST':
+        form = CustomNewsForm(request.POST,instance=news)
+        if form.is_valid():
+            form.save()
+            return redirect('/my-items/%d/' % news.published_by.id)
+        else:
+            form.error = "news did not validate. Maybe some field are missing"
+            return render_to_response('poly_assoc_website/news_add.html', {'form' : form }, RequestContext(request))
 
 @login_required
 def my_items(request,user_pk):

@@ -17,7 +17,7 @@
                   <p class="posted_by">Created at: {{ new.pub_date }}</p></div></td>
                   <td></td><td>&nbsp;</td><td width="1" >&nbsp;</td></tr>
                 <tr>
-                  <td class="edit_delete"><span class="edit"><a onclick="window.open('/admin/cmsplugin_advancednews/news/{{new.id}}/?_popup=1','Edit',  'width=800,height=800, scrollbars=yes');" href="javascript: void(0)"  >Edit</a></span> <span class="delete"><a href="{% url news_delete new.id %}">Delete</a></span></td>
+                  <td class="edit_delete"><span class="edit"><a href="{% url news_edit new.id %}"  >Edit</a></span> <span class="delete"><a href="{% url news_delete new.id %}">Delete</a></span></td>
                   <td></td>
                   <td>&nbsp;</td>
                   <td>&nbsp;</td>
@@ -25,7 +25,7 @@
             {% endfor %}
         {% else %}
         {% if user.is_staff %}
-        <tr class="no_item"> <td>You haven't publish any News! <a onClick="window.open('/admin/cmsplugin_advancednews/news/add/?_popup=1','Add News/Note',  'width=800,height=800, scrollbars=yes');" href="javascript: void(0)">Write a News!</a></td> </tr>
+        <tr class="no_item"> <td>You haven't publish any News! <a href="{% url add_news %}">Write a News!</a></td> </tr>
         {% endif %}
         {% endif %}
         {% if my_photos %}

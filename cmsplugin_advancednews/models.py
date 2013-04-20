@@ -20,7 +20,7 @@ class PublishedNewsManager(models.Manager):
     
 class News(models.Model):
     """ News model """
-    
+    title = models.CharField(_('Title'), max_length=255)
     slug = models.SlugField(_('Slug'), unique_for_date='pub_date', 
                             help_text=_('A slug is a short name which uniquely identifies the news item for this day'))
 
@@ -41,7 +41,7 @@ class News(models.Model):
         verbose_name_plural = _('News')
         ordering = ('-pub_date', )
 
-    title = models.CharField(_('Title'), max_length=255)
+    
     #excerpt = models.TextField(_('Excerpt'), blank=True)
     content = models.TextField(_('Content'), blank=True)
         

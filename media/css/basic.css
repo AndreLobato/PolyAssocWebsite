@@ -2,8 +2,13 @@ HTML, BODY {
     background: white; text-align: left;
 }
 
+
 div {
     
+}
+
+tr.member_row {
+    margin:10px;
 }
 
 .boxtitle {
