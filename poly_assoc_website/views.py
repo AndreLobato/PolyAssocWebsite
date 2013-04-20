@@ -44,7 +44,7 @@ def new_useful_link(request):
         else:
             link = UsefulLinkForm(request.POST)
             link.error = 'Data format did not validate.'
-            return render_to_response('poly_assoc_website/userfullink_add.html', {'form' : link }, RequestContext(request))
+            return render_to_response('poly_assoc_website/usefullink_add.html', {'form' : link }, RequestContext(request))
     else:
         link = UsefulLinkForm()
     try:
