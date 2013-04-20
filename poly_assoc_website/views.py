@@ -39,7 +39,7 @@ def new_useful_link(request):
     c.update(csrf(request))
     if request.method == 'POST':
         link = UsefulLinkForm(request.POST, auto_id=True)
-        if link.is_valid:
+        if link.is_valid():
             link.save()
         else:
             link = UsefulLinkForm(request.POST)
