@@ -18,6 +18,9 @@
     {% if profile.institution %}
     <p><strong>{% trans "Institution" %}</strong><br /> {{ profile.institution }}</p>
     {% endif %}
+    {% if profile.research_area %}
+    <p><strong>{% trans "Research Area" %}</strong><br /> {{ profile.research_area }}</p>
+    {% endif %}
     {% if profile.homepage_url %}
     <p><strong>{% trans "Homepage" %}</strong><br /> <a href="{{ profile.homepage_url }}">{{ profile.homepage_url }}</a></p>
     {% endif %}
