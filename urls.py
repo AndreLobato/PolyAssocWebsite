@@ -107,7 +107,7 @@ urlpatterns = patterns('',
     url(r'^photo/(?P<photo_id>\d+)/delete/$', photo_delete, name="photo_delete"),
 
     (r'^members/$', members_list),
-    url(r'^members/(\w+)/$', member_profile, name="member_profile"),
+    url(r'^members/(.+)/$', member_profile, name="member_profile"),
 )
 
 '''if (forum_settings.PM_SUPPORT):

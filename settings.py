@@ -209,9 +209,12 @@ INSTALLED_APPS = (
 )
 
 try:
-    import mailer
-    INSTALLED_APPS += ('mailer',)
-    EMAIL_BACKEND = "mailer.backend.DbBackend"
+    if DEBUG:
+        EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
+    else:
+        import mailer
+        INSTALLED_APPS += ('mailer',)
+        EMAIL_BACKEND = "mailer.backend.DbBackend"
 except ImportError:
     pass
 

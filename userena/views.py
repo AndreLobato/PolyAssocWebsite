@@ -282,6 +282,11 @@ def signin(request, auth_form=AuthenticationForm,
             user = authenticate(identification=identification,
                                 password=password)
             if user.is_active:
+                try:
+                    user.groups.get(name='AssociationMember')
+                except DoesNotExists:
+                    assocmember = Group.objects.get(name='AssociationMember')
+                    user.groups.add(assocmember)
                 login(request, user)
                 if remember_me:
                     request.session.set_expiry(userena_settings.USERENA_REMEMBER_ME_DAYS[1] * 86400)
