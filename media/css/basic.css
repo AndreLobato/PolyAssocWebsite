@@ -39,7 +39,11 @@ tr.member_row {
     width: 60px;
 }
 
+.google-spreadsheet{
+    text-align: center;
+    margin:10px 20px;
 
+}
 
 #my_items_table{
 color: #666666;
