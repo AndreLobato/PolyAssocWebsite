@@ -108,6 +108,8 @@ urlpatterns = patterns('',
 
     (r'^members/$', members_list),
     url(r'^members/(.+)/$', member_profile, name="member_profile"),
+
+    (r'^researchers_list/$', direct_to_template, {'template': 'poly_assoc_website/researchers_list.html'})
 )
 
 '''if (forum_settings.PM_SUPPORT):
