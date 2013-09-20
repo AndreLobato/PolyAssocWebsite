@@ -1,10 +1,9 @@
 from django.conf.urls.defaults import *
 from django.contrib import admin
 from django.conf import settings
-from django.views.generic.simple import redirect_to
+from django.shortcuts import redirect
 from django.views.generic.list_detail import object_list
-from django.views.generic.simple import direct_to_template
-
+from django.views.generic.simple import direct_to_template, redirect_to
 
 from poly_assoc_website.views import *
 from poly_assoc_website.models import Event
@@ -36,7 +35,7 @@ sitemaps = {
 urlpatterns = patterns('',
 
     # Site base
-    url(r'^$', redirect_to, {'url' : '/cms/latest-news/'}),
+    url(r'^$', redirect_to, {'url':'/cms/latest-news'}),
 
     # CMS
     url(r'^cms/', include('cms.urls')),
@@ -115,6 +114,7 @@ urlpatterns = patterns('',
         (r'^forum/pm/', include('messages.urls')),
    )'''
 
+print urlpatterns
 
 if settings.SERVE_STATIC_FILES:
     urlpatterns += patterns('',

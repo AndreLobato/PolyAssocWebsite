@@ -5,11 +5,10 @@ from django.utils.translation import ugettext_lazy as _
 
 from cms.models import CMSPlugin
 
-from poly_assoc_website.models import User
+from multilingual.translation import TranslationModel
+from multilingual.exceptions import TranslationDoesNotExist
+from multilingual.manager import MultilingualManager
 
-#from multilingual.translation import TranslationModel
-#from multilingual.exceptions import TranslationDoesNotExist
-#from multilingual.manager import MultilingualManager
 
 class PublishedNewsManager(models.Manager):
     """ Filters out all unpublished and items with a publication date in the future. """
@@ -20,7 +19,7 @@ class PublishedNewsManager(models.Manager):
     
 class News(models.Model):
     """ News model """
-    title = models.CharField(_('Title'), max_length=255)
+    
     slug = models.SlugField(_('Slug'), unique_for_date='pub_date', 
                             help_text=_('A slug is a short name which uniquely identifies the news item for this day'))
 
@@ -32,24 +31,25 @@ class News(models.Model):
     
     created = models.DateTimeField(auto_now_add=True, editable=False)
     updated = models.DateTimeField(auto_now=True, editable=False)
+    
     published = PublishedNewsManager()
-    objects = models.Manager()
-    published_by = models.ForeignKey(User)
+    objects = MultilingualManager()
     
     class Meta:
         verbose_name = _('News')
         verbose_name_plural = _('News')
         ordering = ('-pub_date', )
 
-    
-    #excerpt = models.TextField(_('Excerpt'), blank=True)
-    content = models.TextField(_('Content'), blank=True)
+    class Translation(TranslationModel):
+        title = models.CharField(_('Title'), max_length=255)
+        excerpt = models.TextField(_('Excerpt'), blank=True)
+        content = models.TextField(_('Content'), blank=True)
         
     def __unicode__(self):
-        #try:
-        return u'%s'% (self.title)
-        #except TranslationDoesNotExist:
-            #return u'-not-available-'
+        try:
+            return u'%s'% (self.title)
+        except TranslationDoesNotExist:
+            return u'-not-available-'
 
     @models.permalink
     def get_absolute_url(self):
@@ -75,13 +75,14 @@ class Category(models.Model):
         ordering = ('-pub_date', )
     
     
-    title = models.CharField(_('Title'), max_length=255)
+    class Translation(TranslationModel):
+        title = models.CharField(_('Title'), max_length=255)
 
     def __unicode__(self):
-        #try:
-        return u'%s'% (self.title)
-        #except TranslationDoesNotExist:
-            #return u'-not-available-'
+        try:
+            return u'%s'% (self.title)
+        except TranslationDoesNotExist:
+            return u'-not-available-'
 
 
 class LatestAdvancedNewsPlugin(CMSPlugin):

@@ -1,0 +1,161 @@
+HTML, BODY {
+    background: white; text-align: left;
+}
+
+
+div {
+    
+}
+
+tr.member_row {
+    margin:10px;
+}
+
+.boxtitle {
+    
+}
+
+.errorlist {
+    color: red;
+}
+
+.thumb_photo {
+    border: 1px solid #CCCCCC;
+    display: block;
+    padding: 2px;
+}
+
+
+.searchinput {
+    margin: 7px 0px 7px 8px;
+    text-align:left;
+    float:left;
+    width: 190px;
+}
+
+.searchbutton {
+    margin: 7px 8px 7px 1px;
+    float:right;
+    width: 60px;
+}
+
+
+
+#my_items_table{
+color: #666666;
+    font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    text-decoration: none;}
+
+#thumbs_panel{
+
+}
+
+
+
+#thumbs_panel li {
+    display: inline-block;
+    width: 85px;
+    margin: 2px 0;
+    vertical-align: top;
+    text-align: center;
+}
+
+
+
+
+#topnav {
+    height: 30px;
+    
+}
+
+#middlehead {
+    border-bottom: 1px solid grey;
+   
+} 
+
+#middlenav {
+   width: 20%;
+   display: inline-block;
+}
+
+#middlenav li {
+   display: block;
+}
+
+#topnav li {
+    display: inline;
+    float: right;
+    margin: 4px;
+}
+
+#main{
+    clear: both;
+    
+}
+
+#container{
+    margin: 0 auto;
+    text-align: left;
+    width: 1024px;
+}
+
+
+#leftcol {
+    width: 336px;
+    float: left;
+    border-right: 1px solid grey;
+    
+    
+}
+#leftcol li{
+    display: block;
+}
+
+
+#rightcol {
+    width:336px;
+    float:right;
+    border-left: 1px solid grey;
+    
+}
+
+}
+#rightcol li{
+    display: block;
+}
+
+#content {
+        
+    margin: 0px 25%;
+    padding: 10px;
+    
+    
+
+}
+
+#wrapper {
+    margin: 0 auto;
+    width: 1280px;
+    
+}
+
+
+#footer {
+    text-align:center;
+    clear: both;
+    border-top: 1px solid grey;
+}
+
+
+#forumtopics {
+    float:right;        
+}
+
+/* css for timepicker */
+.ui-timepicker-div .ui-widget-header{ margin-bottom: 8px; }
+.ui-timepicker-div dl{ text-align: left; }
+.ui-timepicker-div dl dt{ height: 25px; }
+.ui-timepicker-div dl dd{ margin: -25px 0 10px 65px; }
+.ui-timepicker-div td { font-size: 90%; }

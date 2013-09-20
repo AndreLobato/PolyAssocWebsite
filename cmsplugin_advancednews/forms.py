@@ -5,14 +5,11 @@ from cms.plugin_pool import plugin_pool
 from cms.plugins.text.settings import USE_TINYMCE
 from cmsplugin_advancednews.widgets.wymeditor_widget import WYMEditor
 
-from django.forms import ModelForm
-
-
-#from multilingual.admin import MultilingualModelAdminForm
+from multilingual.admin import MultilingualModelAdminForm
 
 from cmsplugin_advancednews.models import News
 
-class NewsForm(ModelForm):
+class NewsForm(MultilingualModelAdminForm):
     class Meta:
         model = News
         

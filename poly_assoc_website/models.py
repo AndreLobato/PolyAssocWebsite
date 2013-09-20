@@ -11,8 +11,8 @@ class MemberProfile(UserenaLanguageBaseProfile):
     institution = models.CharField(max_length=200, help_text="Name of the place where you work at.")
     work_location = models.CharField(max_length=200, help_text="City and country where your institution is located.")
     research_area = models.CharField(max_length=200)
-    homepage_url =  models.URLField(blank=True,verify_exists=True)
-    curriculum_url = models.URLField(blank=True,verify_exists=True)
+    homepage_url =  models.URLField(blank=True)
+    curriculum_url = models.URLField(blank=True)
     pub_datetime = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User)
 
@@ -50,7 +50,7 @@ class Event(models.Model):
     title = models.CharField(max_length=200)
     event_datetime = models.DateTimeField()
     location = models.TextField()
-    url = models.URLField(verify_exists=True)
+    url = models.URLField()
     details = models.TextField(blank=True)
     posted_by = models.ForeignKey(MemberProfile)
     pub_datetime = models.DateTimeField(auto_now_add=True)
@@ -64,7 +64,7 @@ class Event(models.Model):
     
 
 class UsefulLink(models.Model):
-    url = models.URLField(verify_exists=False)
+    url = models.URLField()
     description = models.TextField(blank=True)
     posted_by = models.ForeignKey(MemberProfile,                                                 
                                 related_name='name')

@@ -5,16 +5,14 @@ from django.utils.translation import ungettext
 from cmsplugin_advancednews.forms import NewsForm
 from cmsplugin_advancednews.models import News, Category
 
-
-from django.contrib.admin.options import ModelAdmin
-#from multilingual.admin import MultilingualModelAdmin
+from multilingual.admin import MultilingualModelAdmin
 
     
-class CategoryAdmin(ModelAdmin):
+class CategoryAdmin(MultilingualModelAdmin):
     date_hierarchy = 'pub_date'
     list_display = ('title', 'pub_date')    
     
-class NewsAdmin(ModelAdmin):
+class NewsAdmin(MultilingualModelAdmin):
     """ Admin for news """
 
     date_hierarchy = 'pub_date'

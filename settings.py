@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
 import os
+import sys
 
 gettext = lambda s: s
 
 PROJECT_DIR = os.path.abspath(os.path.dirname(__file__))
 ## BB NECESSARY
 PROJECT_ROOT = PROJECT_DIR
+
+sys.path.insert(0, PROJECT_DIR)
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -62,16 +65,23 @@ MEDIA_ROOT = os.path.join(PROJECT_DIR, 'media')
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
 MEDIA_URL = '/media/'
 
+STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
+
+
+
+STATIC_URL = '/static/'
+
+
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = '/media/admin/'
+ADMIN_MEDIA_PREFIX = '/static/admin/'
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '0r6%7gip5tmez*vygfv+u14h@4lbt^8e2^26o#5_f_#b7%cm)u'
 
 
-ALLOWED_INCLUDE_ROOTS = (os.path.join(PROJECT_DIR,'templates/poly_assoc_website/'))
+ALLOWED_INCLUDE_ROOTS = ()
 
 
 # Email Settings
@@ -111,24 +121,29 @@ MIDDLEWARE_CLASSES = (
     'cms.middleware.page.CurrentPageMiddleware',
     'cms.middleware.user.CurrentUserMiddleware',
     'cms.middleware.toolbar.ToolbarMiddleware',
-    'cms.middleware.media.PlaceholderMediaMiddleware',
+    'django.contrib.redirects.middleware.RedirectFallbackMiddleware',
+    #'cms.middleware.media.PlaceholderMediaMiddleware',
     #'djangobb_forum.middleware.LastLoginMiddleware',
     #'djangobb_forum.middleware.UsersOnline',
    
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
-    'django.core.context_processors.auth',
+    #'django.core.context_processors.auth',
     'django.core.context_processors.debug',
     'django.core.context_processors.i18n',
-    'django.core.context_processors.media',
+    #'django.core.context_processors.media',
     'django.core.context_processors.request',
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.static',
+    'sekizai.context_processors.sekizai',
     #'django_authopenid.context_processors.authopenid',
     #'djangobb_forum.context_processors.forum_settings',
     'poly_assoc_website.context_processors.latest_links',
     'poly_assoc_website.context_processors.latest_events',
     'poly_assoc_website.context_processors.latest_photos',
-    #'multilingual.context_processors.multilingual',
+    'multilingual.context_processors.multilingual',
+    'cms.context_processors.media',
 )
 
 
@@ -142,6 +157,9 @@ ROOT_URLCONF = 'urls'
 TEMPLATE_DIRS = (
     os.path.join(PROJECT_DIR, 'templates'),
 )
+
+STATICFILES_DIRS = (os.path.join(PROJECT_DIR, 'staticfiles'),
+    )
 
 #DJANGOBB_SRC = os.path.join(PROJECT_DIR,'./djangobb/')
 
@@ -157,8 +175,8 @@ DEFAULT_LANGUAGE = 0
 
 
 CMS_SOFTROOT = os.path.join(PROJECT_DIR, '/cms/')
-CMS_MEDIA_ROOT = os.path.join(PROJECT_DIR, '/media/cms/')
-CMS_MEDIA_URL = '/media/cms/'
+CMS_MEDIA_ROOT = os.path.join(PROJECT_DIR, '/static/cms/')
+CMS_MEDIA_URL = '/static/cms/'
 #CMS_LANGUAGES = [['en'],['English']]
 
 CMS_APPLICATIONS_URLS = (
@@ -185,6 +203,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.sites',
     'django.contrib.admin',
+    'django.contrib.staticfiles',
+    'django.contrib.redirects',
     'cms',
     'menus',
     'mptt',
@@ -199,6 +219,7 @@ INSTALLED_APPS = (
     #'registration',
     #'django_authopenid',
     #'djangobb_forum',
+    'sekizai',
     'haystack',
     #'messages',
     'userena',
