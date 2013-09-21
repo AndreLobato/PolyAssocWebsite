@@ -114,7 +114,6 @@ urlpatterns = patterns('',
         (r'^forum/pm/', include('messages.urls')),
    )'''
 
-print urlpatterns
 
 if settings.SERVE_STATIC_FILES:
     urlpatterns += patterns('',
