@@ -35,7 +35,7 @@ sitemaps = {
 urlpatterns = patterns('',
 
     # Site base
-    url(r'^$', redirect_to, {'url':'/cms/latest-news'}),
+    url(r'^$', redirect_to, {'url':'/cms'}),
 
     # CMS
     url(r'^cms/', include('cms.urls')),
